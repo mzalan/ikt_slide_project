@@ -12,6 +12,7 @@ player = pygame.Surface((100,100))
 player_rect = player.get_rect(center=(960,930))
 
 speed_font = pygame.font.Font(None, 50)
+gover_font = pygame.font.Font(None, 120)
 
 leftRight = [False,False] #bal gomb - jobb gomb booleanok. keydown -> true, keyup -> false mindkét bool esetén.
 moveD = False #ha true, bal volt legutóbb lenyomva, ha false akkor jobb. keyupok esetén értékcsere (pl ha jobbot elengeded, falseról truera vált).
@@ -55,12 +56,15 @@ def PlayerMoving(a, edge): #sebességnövelés a boost változó által illetve 
         player_rect.x = edge
 
 def Print(Class):
-    c = Class(100,100,960,900,"purple")
+    c = Class(100,100,250,900,"purple")
     surf = Wall.SelfRet(c).Surf
     rect = Wall.SelfRet(c).Rect
     color = Wall.SelfRet(c).Color
     surf.fill(color)
     screen.blit(surf, rect)
+    if rect.colliderect(player_rect):
+        gover_text = gover_font.render("Game over", True, "red")
+        screen.blit(gover_text,(900,320))
     
 
 while True:
