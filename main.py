@@ -1,4 +1,5 @@
 import pygame
+from Wall import *
 
 pygame.init()
 screen = pygame.display.set_mode((1920,1080))
@@ -53,6 +54,14 @@ def PlayerMoving(a, edge): #sebességnövelés a boost változó által illetve 
     if player_rect.x * a > edge * a:
         player_rect.x = edge
 
+def Print(Class):
+    c = Class(100,100,960,900,"purple")
+    surf = Wall.SelfRet(c).Surf
+    rect = Wall.SelfRet(c).Rect
+    color = Wall.SelfRet(c).Color
+    surf.fill(color)
+    screen.blit(surf, rect)
+    
 
 while True:
     for event in pygame.event.get():
@@ -77,7 +86,7 @@ while True:
     
 
     screen.fill("lightblue")
-
+    Print(Wall)
 
     if boosting:
         boost += 0.003
