@@ -7,4 +7,6 @@ class Wall:
         self.Color = color
     def SelfRet(self):
         return self
+
+w = Wall.SelfRet
         
