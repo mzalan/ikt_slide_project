@@ -1,5 +1,7 @@
 import pygame
+import random
 pygame.init()
+
 
 class Globals:
 
@@ -14,8 +16,10 @@ class Globals:
 
         self.player_rect = self.player.get_rect(center=(960,930))
 
-        self.speed_font = pygame.font.Font(None, 50)
+        self.first_font = pygame.font.Font(None, 55)
         self.gover_font = pygame.font.Font(None, 120)
+        self.score_font = pygame.font.Font(None, 80) 
+
         self.leftRight = [False,False] #bal gomb - jobb gomb booleanok. keydown -> true, keyup -> false mindkét bool esetén.
         self.moveD = False #ha true, bal volt legutóbb lenyomva, ha false akkor jobb. keyupok esetén értékcsere (pl ha jobbot elengeded, falseról truera vált).
         self.speed = 11 #alapértelmezett sebesség, mindig a boost változó értékével növelődik, ha mindkét iránygomb el van engedve akkor resetelődik
@@ -23,9 +27,21 @@ class Globals:
         self.boosting = False #ha a leftRightban mindkét bool true, akkor ez is true
         self.speedCap = 38 #maxsebesség (pixel/frame)
         self.speedFloor = 11#minimumsebesség (pixel/frame)
-
         
+
+        self.objects = {}
+        self.spawnPoint = -100
+
+        self.objects[0] = [random.randint(100,1800), self.spawnPoint] #objects dictionary: az azonosító a key (0-tól végtelenig)
+    #                                                                    értéklista 0.eleme a renderelések száma, 1. az xpozíció, 2. az y pozíció 
+        self.diff = 5
+        self.diffCap = 40
+        self.Run = True
+        self.Points = 0
+        self.Best = 0
+
     def SelfRet(self):
         return self
+
 
 r = Globals.SelfRet(Globals())
