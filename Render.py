@@ -41,8 +41,7 @@ def Render(Class, cl, _id):
 
 
     if cl(c).Draw:
-        drawr = pygame.draw.rect(surf,"red",rect,50)
-        r.screen.blit(surf,drawr)
+        r.screen.blit(surf,(r.objects[_id][0],r.objects[_id][1]))
     else:
         r.screen.blit(surf, rect)
 
