@@ -19,7 +19,7 @@ def Walling(cond):
             wallCount += 5
 
         for i in range(list(r.objects.keys())[0], wallCount):
-            Render(Wall, w, i)
+            Render(Coin, w, i)
 
 runs = 0
 

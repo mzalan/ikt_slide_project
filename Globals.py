@@ -39,6 +39,7 @@ class Globals:
         self.Run = True
         self.Points = 0
         self.Best = 0
+        # self.coin_rect = [85, 85, random.randint(100,1800), -100]
 
     def SelfRet(self):
         return self

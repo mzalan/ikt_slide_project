@@ -7,13 +7,17 @@ from coin import *
 def Render(Class, cl, _id):
     # print(r.objects)
 
+    # if _id+1 not in r.objects.keys():
+    #     c = Class(100,100,r.objects[_id][0],r.objects[_id][1],False)
+    #     # print("if not in keys")
+    # else:
+    #     r.objects[_id][1] += r.diff
+    #     c = Class(100,100,r.objects[_id][0],r.objects[_id][1], False)
     if _id+1 not in r.objects.keys():
-        c = Class(100,100,r.objects[_id][0],r.objects[_id][1],False)
-        # print("if not in keys")
+        c = Class(85,85,r.objects[_id][0],r.objects[_id][1], True)
     else:
         r.objects[_id][1] += r.diff
-        c = Class(100,100,r.objects[_id][0],r.objects[_id][1], False)
-        # print("in keys")
+        c = Class(85,85,r.objects[_id][0],r.objects[_id][1], True)
 
     if r.objects[_id][1] > 1120:
         del r.objects[_id]
@@ -33,9 +37,12 @@ def Render(Class, cl, _id):
     surf = cl(c).Surf
     rect = cl(c).Rect
     color = cl(c).Color
-    surf.fill(color)
+
+
+
     if cl(c).Draw:
-        rect = pygame.draw.rect(surf,"#b89d04",rect,5,5)
+        drawr = pygame.draw.rect(surf,"red",rect,50)
+        r.screen.blit(surf,drawr)
     else:
         r.screen.blit(surf, rect)
 
