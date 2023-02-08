@@ -12,14 +12,20 @@ pygame.init()
 
 wallCount = 0
 
+
 def Walling(cond):
+
     if r.Run:
         global wallCount
         if cond:
             wallCount += 5
-
+        print(r.objects)
         for i in range(list(r.objects.keys())[0], wallCount):
-            Render(Coin, w, i)
+            if r.objects[i][0] == 1:
+                Render(Wall, i)
+            else:
+                Render(Coin, i)
+
 
 runs = 0
 
@@ -60,7 +66,7 @@ while True:
                 r.diff = 5
                 wallCount = 0
                 r.objects = {}
-                r.objects[0] = [random.randint(100,1800), r.spawnPoint]
+                r.objects[0] = [random.randint(1,2), random.randint(100,1800), r.spawnPoint]
                 runs = 0
                 r.Points = 0
     
