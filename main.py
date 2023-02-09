@@ -19,10 +19,9 @@ def Walling(cond):
         global wallCount
         if cond:
             wallCount += 5
-        print(r.objects)
         for i in range(list(r.objects.keys())[0], wallCount):
             if r.objects[i][0] == 1:
-                Render(Wall, i)
+                Render(Coin, i)
             else:
                 Render(Coin, i)
 
@@ -66,7 +65,7 @@ while True:
                 r.diff = 5
                 wallCount = 0
                 r.objects = {}
-                r.objects[0] = [random.randint(1,2), random.randint(100,1800), r.spawnPoint]
+                r.objects[0] = [random.randint(1,2), random.randint(100,1800), r.spawnPoint, True]
                 runs = 0
                 r.Points = 0
     

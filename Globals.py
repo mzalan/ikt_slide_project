@@ -34,7 +34,7 @@ class Globals:
         self.objects = {}
         self.spawnPoint = -100
 
-        self.objects[0] = [random.randint(1,2), random.randint(100,1800), self.spawnPoint] #objects dictionary: az azonosító a key (0-tól végtelenig)
+        self.objects[0] = [random.randint(1,2), random.randint(100,1800), self.spawnPoint, True] #objects dictionary: az azonosító a key (0-tól végtelenig)
     #                                                                    értéklista 0.eleme a renderelések száma, 1. az xpozíció, 2. az y pozíció 
         self.diff = 5
         self.diffCap = 40
