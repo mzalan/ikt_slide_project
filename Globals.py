@@ -18,9 +18,13 @@ class Globals:
 
         self.player_rect = self.player.get_rect(center=(960,930))
 
-        self.first_font = pygame.font.Font(None, 55)
-        self.gover_font = pygame.font.Font(None, 120)
-        self.score_font = pygame.font.Font(None, 80) 
+        self.font_family = os.path.join("assets", "pixel.ttf")
+
+        self.small_font = pygame.font.Font(self.font_family, 35)
+        self.first_font = pygame.font.Font(self.font_family, 55)
+        self.gover_font = pygame.font.Font(self.font_family, 120)
+        self.score_font = pygame.font.Font(self.font_family, 80) 
+        #self.large_font = pygame.font.Font(self.font_family, 150)
 
         self.leftRight = [False,False] #bal gomb - jobb gomb booleanok. keydown -> true, keyup -> false mindkét bool esetén.
         self.moveD = False #ha true, bal volt legutóbb lenyomva, ha false akkor jobb. keyupok esetén értékcsere (pl ha jobbot elengeded, falseról truera vált).
@@ -41,6 +45,10 @@ class Globals:
         self.Run = True
         self.Points = 0
         self.Best = 0
+
+        self.Coins = 0
+        self.elapsed = 0
+        self.bounce_data = None
         # self.coin_rect = [85, 85, random.randint(100,1800), -100]
 
     def SelfRet(self):

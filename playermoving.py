@@ -1,31 +1,15 @@
 from Globals import *
 from Wall import *
+from keycontrols import *
 
-def PlayerMoving(a, edge, wedge): #sebességnövelés a boost változó által illetve a maximum sebesség meghatározása
-
+def PlayerMoving(a, edge): #sebességnövelés a boost változó által illetve a maximum sebesség meghatározása
     if r.speed < r.speedCap:
-        r.speed += r.boost            
+        r.speed += r.boost        
     else:
         r.speed = r.speedCap
     r.player_rect.x += r.speed * a
     if r.player_rect.x * a > edge * a:
         r.player_rect.x = edge
-
-    # if Wall.SelfRet(Wall(100,100,1500,900)).Rect.colliderect(r.player_rect):
-    #     gover_text = r.gover_font.render("Game over", True, "red")
-    #     r.screen.blit(gover_text,(900,320))
-    #     if r.player_rect.x * a > wedge * a:
-    #         r.player_rect.x = wedge
-    # for obj in r.objects.items():
-    #     print(r.player_rect.x)
-    #     print(obj[1][0])
-    #     if obj[1][1] < r.player_rect.y + 50 and obj[1][1] > r.player_rect.y -50 and obj[1][0] < r.player_rect.x + 50 and obj[1][0] > r.player_rect.x -50:
-           
-    #         gover_text = r.gover_font.render("Game over", True, "red")
-    #         r.screen.blit(gover_text,(900,320))
-    #         print("CONGRATULATIONS MUHAHAHHAHAHA")
-    #         pygame.quit()
-    #         exit()
 
 def BoostMoving():
     if r.boosting:
@@ -35,10 +19,39 @@ def BoostMoving():
         r.boost = 0.5
     
     if r.moveD and r.leftRight[0]:
-        PlayerMoving(-1, 0, 300)
+        PlayerMoving(-1, 0)
 
     if not r.moveD and r.leftRight[1]:
-        PlayerMoving(1, 1820,100)
+        PlayerMoving(1, 1820)
+
+
+def Bounce(d,edge, obj):
+
+    if r.elapsed == 0:
+        global bouncespeed
+        bouncespeed = r.speed * 3
+        global bounce_dir
+        bounce_dir = d
+        global e
+        e = edge
+    if r.elapsed < 25:
+
+        r.player_rect.x += bouncespeed * bounce_dir
+        if r.player_rect.x * bounce_dir > e * bounce_dir:
+            r.player_rect.x = e
+            
+            bounce_dir *= -1
+            e += 1820 * bounce_dir
+
+
+    else:
+        r.elapsed = -1
+        r.bounce_data = None
+        if not r.leftRight[0] and not r.leftRight[1]:
+            KeyupControls(0, 1, False)
+
+    r.elapsed += 1
+
 
 def PlayerBlit(cond):
     if cond:
@@ -49,9 +62,16 @@ def PlayerBlit(cond):
             greenness = 0
         r.player.fill(pygame.Color(255, greenness, 0))
 
-        first_text = r.first_font.render(str(round(r.Points,0)).split(".")[0], True, "black")
-        second_text = r.first_font.render(str(round(r.Best,0)).split(".")[0], True, "black")#ki lehet írni változók értékeit a bal felső sarokba tesztelési célokból.
+
+
+        if r.Points > r.Best:
+            first_text = r.first_font.render(str(round(r.Points,0)).split(".")[0], True, "#5800d4")
+        else:
+            first_text = r.first_font.render(str(round(r.Points,0)).split(".")[0], True, "black")
+
+        second_text = r.first_font.render(str(round(r.Coins,0)).split(".")[0], True, "#856e1c")
         second_rect = second_text.get_rect(topright=(1915,5))
 
         r.screen.blit(first_text,(5,5)) 
         r.screen.blit(second_text,second_rect) 
+

@@ -8,6 +8,7 @@ def KeyupControls(dirIndex, comp, isMoveD):
         r.speed = r.speedFloor
         r.boost = 0.5
 
+
 def KeydownControls(dirIndex, comp, isMoveD): 
     r.leftRight[dirIndex] = True
     r.moveD = isMoveD
