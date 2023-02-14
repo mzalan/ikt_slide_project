@@ -20,18 +20,10 @@ def Menu(screen):
     r.screen.blit(play_text, (width/2+50,height/2))
     r.screen.blit(exit_text, (width/2+50,height/2))
 
-    while True:
+    if width/2 <= mouse[0] <= width/2+140 and height/2 <= mouse[1] <= height/2+40:
+        pygame.draw.rect(screen,color_light,[width/2,height/2,140,40])
+    else:
+        pygame.draw.rect(screen,color_dark,[width/2,height/2,140,40])
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                exit()
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE or event.key == pygame.K_F5:
-                    pygame.quit()
-                    exit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if width/2 <= mouse[0] <= width/2+140 and height/2 <= mouse[1] <= height/2+40:
-                    pygame.draw.rect(screen,color_light,[width/2,height/2,140,40])
-                else:
-                    pygame.draw.rect(screen,color_dark,[width/2,height/2,140,40])
+    #         if event.type == pygame.MOUSEBUTTONDOWN:
+    #               Menu(r.screen)

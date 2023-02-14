@@ -1,0 +1,10 @@
+@font-face {
+    font-family: pixel;
+    src: url(assets/pixel.ttf)
+}
+
+body {
+
+    background-color:lightblue;
+    font-family: pixel;
+}
