@@ -25,23 +25,17 @@ def BoostMoving():
         PlayerMoving(1, 1820)
 
 
-def Bounce(d,edge, obj):
+def Bounce(d,edge, speed):
 
-    if r.elapsed == 0:
-        global bouncespeed
-        bouncespeed = r.speed * 3
-        global bounce_dir
-        bounce_dir = d
-        global e
-        e = edge
     if r.elapsed < 25:
 
-        r.player_rect.x += bouncespeed * bounce_dir
-        if r.player_rect.x * bounce_dir > e * bounce_dir:
-            r.player_rect.x = e
+        r.player_rect.x += speed * d
+        if r.player_rect.x * d > edge * d:
             
-            bounce_dir *= -1
-            e += 1820 * bounce_dir
+            r.player_rect.x = edge
+            
+            r.bounce_data[0] *= -1
+            r.bounce_data[1] += 1820 * r.bounce_data[0]
 
 
     else:
@@ -54,7 +48,7 @@ def Bounce(d,edge, obj):
 
 
 def PlayerBlit(cond):
-    if cond:
+    if cond == 1:
         greenness = int((str(255-((255/(r.speedCap-r.speedFloor))*(r.speed-r.speedFloor)))).split(".")[0])
         r.screen.blit(r.player, r.player_rect)
 

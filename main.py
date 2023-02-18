@@ -5,32 +5,30 @@ from Globals import *
 from playermoving import *
 from Render import *
 from gameover import *
-import random
 from coin import *
 from Bouncepad import *
 from bpadcollision import *
+from Missile import *
+from menu import *
 
 pygame.init()
-
-wallCount = 0
 
 
 def Walling(cond):
 
     if r.Run:
-        global wallCount
         if cond:
-            wallCount += 1
-        for i in range(list(r.objects.keys())[0], wallCount):
+            r.objCount += 2
+        for i in range(list(r.objects.keys())[0], r.objCount):
             if r.objects[i][0] == 1:
-                Render(Coin, i)
-            else:
                 Render(Bouncepad, i)
-
-
-runs = 0
+            elif r.objects[i][0] == 2:
+                Render(Coin, i)
+            elif r.objects[i][0] == 3:
+                Render(Coin, i)
 
 while True:
+    r.click = False
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -55,53 +53,55 @@ while True:
             if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
                 KeydownControls(1, 0, False)
 
-            if event.key == pygame.K_e:
-                r.player_rect.x = 1200
-            if event.key == pygame.K_o:
-                r.player_rect.x = 50
+            # if event.key == pygame.K_e:
+            #     r.player_rect.x = 1200
+            # if event.key == pygame.K_o:
+            #     r.player_rect.x = 50
+            
 
-            #restart game
-            if event.key == pygame.K_r and not r.Run:
-                if r.Points > r.Best:
-                    r.Best = r.Points
-                r.Run = True
-                r.diff = 5
-                wallCount = 0
-                r.objects = {}
-                r.objects[0] = [random.randint(1,2), random.randint(100,1800), r.spawnPoint, True]
-                runs = 0
-                r.Points = 0
-                r.Coins = 0
-    
+            if event.key == pygame.K_r and r.Run == 2:
+                StartGame()
+            
+        if event.type == pygame.MOUSEBUTTONDOWN and (r.Run == 0 or r.Run == 2):
+            r.click = True
+                
+
     r.screen.fill("lightblue")
 
-    if runs % 50 == 0:
-        if r.diff < r.diffCap:
-            r.diff += 0.2
+    if r.Run == 0:
+        Menu(r.screen)
+    elif r.Run == 1:
+
+        if r.runs % 50 == 0:
+            if r.diff < r.diffCap:
+                r.diff += 0.2
+            else:
+                r.diff = 40
+
+                
+            Walling(True)
+
         else:
-            r.diff = 40
+            Walling(False)
 
-            
-        Walling(True)
+        if r.runs % 5 == 0 and r.Run == 1:
+            r.Points += 10
 
-    else:
-        Walling(False)
+        if r.bounce_data == None:
+            BoostMoving()
+        else:
+            Bounce(r.bounce_data[0],r.bounce_data[1], r.bounce_data[2])
 
-    if runs % 5 == 0 and r.Run:
-        r.Points += 10
-
-    if r.bounce_data == None:
-        BoostMoving()
-    else:
-        Bounce(r.bounce_data[0],r.bounce_data[1], r.bounce_data[2])
-
-    PlayerBlit(r.Run)
-    
-    if r.Run:
-        runs += 1   
-    else:
+        PlayerBlit(r.Run)
+        
+        r.runs += 1   
+    elif r.Run == 2:
         GameOver()
 
+    # al = ""
+    # for key in r.objects:
+    #     al += str(key) + " "
+    # print(al)
 
     pygame.display.update()
     r.clock.tick(60)

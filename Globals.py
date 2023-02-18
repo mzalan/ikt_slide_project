@@ -38,17 +38,22 @@ class Globals:
         self.objects = {}
         self.spawnPoint = -100
 
-        self.objects[0] = [random.randint(1,2), random.randint(100,1800), self.spawnPoint, True] #objects dictionary: az azonosító a key (0-tól végtelenig)
+        self.objects[0] = [random.randint(1,3), random.randint(100,1800), self.spawnPoint, True] #objects dictionary: az azonosító a key (0-tól végtelenig)
     #                                                                    értéklista 0.eleme a renderelések száma, 1. az xpozíció, 2. az y pozíció 
         self.diff = 5
         self.diffCap = 40
-        self.Run = True
         self.Points = 0
         self.Best = 0
+
+        self.Run = 0 #értéke megmutatja, hogy melyik felületre kell váltani 0 - menu, 1 - játék, 2 - game over, 3 - 
 
         self.Coins = 0
         self.elapsed = 0
         self.bounce_data = None
+
+        self.objCount = 0
+        self.click = False
+        self.runs = 0
         # self.coin_rect = [85, 85, random.randint(100,1800), -100]
 
     def SelfRet(self):

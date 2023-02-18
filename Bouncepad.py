@@ -7,7 +7,8 @@ from bpadcollision import *
 img = pygame.image.load(os.path.join('assets', 'trampoline.png'))
 
 class Bouncepad:
-    
+    global speed
+    speed = 1
     def __init__(self, xpos, ypos):
         self.Surf = pygame.Surface((70,180))
         width = self.Surf.get_rect().width
@@ -21,17 +22,24 @@ class Bouncepad:
     def Collide(self, _id):
         if self.Rect.colliderect(r.player_rect):
             if r.player_rect.y - self.Rect.y < 160 and r.elapsed == 0:
-
-                if r.moveD:
-                    r.bounce_data = (1, 1820, self)
+                
+                if self.Rect.x < r.player_rect.x:
+                    r.bounce_data = [1, 1820, r.speed*3]
+                    
                 else:
-                    r.bounce_data = (-1, 0, self)
+                    r.bounce_data = [-1, 0, r.speed*3]
 
             elif r.player_rect.y - self.Rect.y >= 160:
-                r.Run = False
+                r.Run = 2
             else:
                 r.elapsed = 0
+                r.bounce_data[0] *= -1
+                r.bounce_data[1] += 1820 * r.bounce_data[0]
+    
+    def Speed():
+        return speed
 
+                
     
     
     
