@@ -24,8 +24,8 @@ class Coin:
                 r.Coins += 1
             r.objects[_id][3] = False
     
-    def Speed():
-        return speed
+    def Speed(self, _id):
+        return self.speed
 
             
 

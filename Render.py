@@ -7,25 +7,65 @@ from Missile import *
 def Render(Class, _id):
     # if Class == Missile:
     #     r.objects[_id].append()
+    sorting = sorted(r.objects)
+    print(sorting)
+    soted = {}
+    i = 0
+    for s in sorting:
+        soted[s] = r.objects[s]
+        i += 1
+
+    r.objects = soted
+
+    try:   
+        print(r.objects[_id][4])
+    except:
+        r.objects[_id].append(r.runs)
+        
     if _id+1 not in r.objects.keys():
         c = Class(r.objects[_id][1],r.objects[_id][2])
-        if Class == Missile:
-            r.objects[_id].append(r.runs)
+
+        
             
     else:
-        r.objects[_id][2] += r.diff * Class.Speed()
+        r.objects[_id][2] += r.diff * Class.Speed(Class(0,0), _id)
         c = Class(r.objects[_id][1],r.objects[_id][2])
-        
+
+    
 
     if r.objects[_id][3]:
         Class.Render(c, _id)
 
     Class.Collide(c, _id)
+
+    if r.objects[_id][2] > (-100 + 1270) * Class.Speed(c, _id) - 100:
+
+        print(f"Index {_id} object has been deleted at {r.runs}")
+        del r.objects[_id]
+        r.Points += r.diff * 2
+
     
-    if r.objects[_id][2] > (-100 + 1270) * Class.Speed() - 100:
-            del r.objects[_id]
-            r.Points += r.diff * 2
-            
+
+
+
+    # blacklist = []
+    # if d == 1:
+    #     for obj in r.objects.items():
+
+    #         if r.objects[obj[0]][0] == 2 or r.objects[obj[0]][0] == 3:
+    #             blacklist.append(obj[0])
+    #             break
+        
+    #     for black in blacklist:
+    #         print(f"Index {black} missile has been deleted at {r.runs}")
+    #         del r.objects[black]
+
+  
+
+
+
+
+
     try:
         if r.objects[_id+1][1] == None:
             pass

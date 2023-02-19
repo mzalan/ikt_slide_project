@@ -16,16 +16,15 @@ pygame.init()
 
 def Walling(cond):
 
-    if r.Run:
-        if cond:
-            r.objCount += 2
-        for i in range(list(r.objects.keys())[0], r.objCount):
-            if r.objects[i][0] == 1:
-                Render(Bouncepad, i)
-            elif r.objects[i][0] == 2:
-                Render(Coin, i)
-            elif r.objects[i][0] == 3:
-                Render(Coin, i)
+    if cond:
+        r.objCount += 1
+    for i in range(list(r.objects.keys())[0], r.objCount):
+        if r.objects[i][0] == 1:
+            Render(Missile, i)
+        elif r.objects[i][0] == 2:
+            Render(Wall, i)
+        elif r.objects[i][0] == 3:
+            Render(Coin, i)
 
 while True:
     r.click = False
@@ -98,11 +97,10 @@ while True:
     elif r.Run == 2:
         GameOver()
 
-    # al = ""
-    # for key in r.objects:
-    #     al += str(key) + " "
-    # print(al)
-
+    al = ""
+    for mama in zip(r.objects.keys(), r.objects.items()):
+        al += str(mama[0]) + ":" + str(mama[1][1][0]) + "  "
+    print(al)
     pygame.display.update()
     r.clock.tick(60)
 

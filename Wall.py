@@ -4,8 +4,6 @@ from Globals import *
 img = pygame.image.load(os.path.join('assets', 'wall.png'))
 
 class Wall:
-    global speed
-    speed = 1
     def __init__(self,xpos, ypos):
         self.Surf = pygame.Surface((100,100))
         width = self.Surf.get_rect().width
@@ -21,7 +19,7 @@ class Wall:
         if self.Rect.colliderect(r.player_rect):
             r.Run = 2
     
-    def Speed():
-        return speed
+    def Speed(self, _id):
+        return self.speed
 
         

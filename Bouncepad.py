@@ -7,15 +7,13 @@ from bpadcollision import *
 img = pygame.image.load(os.path.join('assets', 'trampoline.png'))
 
 class Bouncepad:
-    global speed
-    speed = 1
     def __init__(self, xpos, ypos):
         self.Surf = pygame.Surface((70,180))
         width = self.Surf.get_rect().width
         height = self.Surf.get_rect().height
         self.Surf = pygame.transform.scale(img, (width, height))
         self.Rect = self.Surf.get_rect(topleft=(xpos,ypos))
-
+        self.speed = 1
     def Render(self, _id):
         r.screen.blit(self.Surf,(r.objects[_id][1],r.objects[_id][2]))
     
@@ -36,8 +34,8 @@ class Bouncepad:
                 r.bounce_data[0] *= -1
                 r.bounce_data[1] += 1820 * r.bounce_data[0]
     
-    def Speed():
-        return speed
+    def Speed(self, _id):
+        return self.speed
 
                 
     
