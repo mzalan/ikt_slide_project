@@ -45,7 +45,7 @@ class Globals:
         self.Points = 0
         self.Best = 0
 
-        self.Run = 1 #értéke megmutatja, hogy melyik felületre kell váltani 0 - menu, 1 - játék, 2 - game over, 3 - 
+        self.Run = 0 #értéke megmutatja, hogy melyik felületre kell váltani 0 - menu, 1 - játék, 2 - game over, 3 - 
 
         self.Coins = 0
         self.elapsed = 0
