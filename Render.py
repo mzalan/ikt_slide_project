@@ -5,10 +5,8 @@ from coin import *
 from Missile import *
 
 def Render(Class, _id):
-    # if Class == Missile:
-    #     r.objects[_id].append()
     sorting = sorted(r.objects)
-    print(sorting)
+    # print(sorting)
     soted = {}
     i = 0
     for s in sorting:
@@ -18,7 +16,7 @@ def Render(Class, _id):
     r.objects = soted
 
     try:   
-        print(r.objects[_id][4])
+        r.objects[_id][4]
     except:
         r.objects[_id].append(r.runs)
         
@@ -38,12 +36,19 @@ def Render(Class, _id):
 
     Class.Collide(c, _id)
 
-    if r.objects[_id][2] > (-100 + 1270) * Class.Speed(c, _id) - 100:
-
-        print(f"Index {_id} object has been deleted at {r.runs}")
-        del r.objects[_id]
-        r.Points += r.diff * 2
-
+    if r.objects[_id][2] > 1070: #* Class.Speed(c, _id) 
+        
+        if Class != Missile:
+            # print(f"Index {_id} object has been deleted at {r.runs}")
+            del r.objects[_id]
+            r.Points += r.diff * 2
+        else:
+            # print(r.objects)
+            # print(f"min objects: {min(r.objects.keys())}")
+            if _id == min(r.objects.keys()):
+                print(f"{_id} rocket deleted")
+                del r.objects[_id]
+    
     
 
 

@@ -59,8 +59,8 @@ class Missile:
             r.Run = 2
             
     def Speed(self, _id):
-        print(r.objects)
-        print(_id)
+        # print(r.objects)
+        # print(_id)
         if r.runs - r.objects[_id][4] > 100:
             self.speed = 7
         else:

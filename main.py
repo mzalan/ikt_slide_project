@@ -14,10 +14,10 @@ from menu import *
 pygame.init()
 
 
-def Walling(cond):
+def Generating(cond):
 
     if cond:
-        r.objCount += 1
+        r.objCount += 2
     for i in range(list(r.objects.keys())[0], r.objCount):
         if r.objects[i][0] == 1:
             Render(Missile, i)
@@ -69,7 +69,7 @@ while True:
 
     if r.Run == 0:
         Menu(r.screen)
-    elif r.Run == 1:
+    elif r.Run == 1 or r.Run == 2:
 
         if r.runs % 50 == 0:
             if r.diff < r.diffCap:
@@ -78,10 +78,10 @@ while True:
                 r.diff = 40
 
                 
-            Walling(True)
+            Generating(True)
 
         else:
-            Walling(False)
+            Generating(False)
 
         if r.runs % 5 == 0 and r.Run == 1:
             r.Points += 10
@@ -94,8 +94,8 @@ while True:
         PlayerBlit(r.Run)
         
         r.runs += 1   
-    elif r.Run == 2:
-        GameOver()
+    # elif r.Run == 2:
+    #     GameOver()
 
     al = ""
     for mama in zip(r.objects.keys(), r.objects.items()):
