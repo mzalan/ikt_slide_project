@@ -20,11 +20,11 @@ def Generating(cond):
         r.objCount += 1
     for i in range(list(r.objects.keys())[0], r.objCount):
         if r.objects[i][0] == 1:
-            Render(Bouncepad, i)
+            Render(Speed, i)
         elif r.objects[i][0] == 2:
             Render(Bouncepad, i)
         elif r.objects[i][0] == 3:
-            Render(Bouncepad, i)
+            Render(Missile, i)
 
 while True:
     r.click = False
