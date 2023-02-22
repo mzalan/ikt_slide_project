@@ -30,7 +30,6 @@ class Missile:
 
     def Render(self, _id):
         rel_runs = r.runs - r.objects[_id][4]
-        # r.objects[_id][1] += b
 
         if rel_runs > 100:
             r.screen.blit(self.Surf,(r.objects[_id][1],r.objects[_id][2]))

@@ -59,9 +59,9 @@ def PlayerBlit(cond):
 
 
         if r.Points > r.Best:
-            first_text = r.first_font.render(str(round(r.Points,0)).split(".")[0], True, "#5800d4")
+            first_text = r.first_font.render(str(round(r.diff,0)).split(".")[0], True, "#5800d4")
         else:
-            first_text = r.first_font.render(str(round(r.Points,0)).split(".")[0], True, "black")
+            first_text = r.first_font.render(str(round(r.diff,0)).split(".")[0], True, "black")
 
         second_text = r.first_font.render(str(round(r.Coins,0)).split(".")[0], True, "#856e1c")
         second_rect = second_text.get_rect(topright=(1915,5))

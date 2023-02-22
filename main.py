@@ -7,9 +7,9 @@ from Render import *
 from gameover import *
 from coin import *
 from Bouncepad import *
-from bpadcollision import *
 from Missile import *
 from menu import *
+from Speed import *
 
 pygame.init()
 
@@ -17,14 +17,14 @@ pygame.init()
 def Generating(cond):
 
     if cond:
-        r.objCount += 2
+        r.objCount += 1
     for i in range(list(r.objects.keys())[0], r.objCount):
         if r.objects[i][0] == 1:
-            Render(Missile, i)
+            Render(Bouncepad, i)
         elif r.objects[i][0] == 2:
-            Render(Wall, i)
+            Render(Bouncepad, i)
         elif r.objects[i][0] == 3:
-            Render(Coin, i)
+            Render(Bouncepad, i)
 
 while True:
     r.click = False
@@ -35,7 +35,6 @@ while True:
         
             
         if event.type == pygame.KEYUP:
-            # if r.elapsed == 0:
                 if event.key == pygame.K_LEFT or event.key == pygame.K_a:
                     KeyupControls(0, 1, False)
 
@@ -51,12 +50,7 @@ while True:
 
             if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
                 KeydownControls(1, 0, False)
-
-            # if event.key == pygame.K_e:
-            #     r.player_rect.x = 1200
-            # if event.key == pygame.K_o:
-            #     r.player_rect.x = 50
-            
+                
 
             if event.key == pygame.K_r and r.Run == 2:
                 StartGame()
@@ -69,13 +63,13 @@ while True:
 
     if r.Run == 0:
         Menu(r.screen)
-    elif r.Run == 1 or r.Run == 2:
+    elif r.Run == 1:
 
         if r.runs % 50 == 0:
             if r.diff < r.diffCap:
                 r.diff += 0.2
             else:
-                r.diff = 40
+                r.diff = r.diffCap
 
                 
             Generating(True)
@@ -94,13 +88,10 @@ while True:
         PlayerBlit(r.Run)
         
         r.runs += 1   
-    # elif r.Run == 2:
-    #     GameOver()
+    elif r.Run == 2:
+        GameOver()
 
-    al = ""
-    for mama in zip(r.objects.keys(), r.objects.items()):
-        al += str(mama[0]) + ":" + str(mama[1][1][0]) + "  "
-    print(al)
+
     pygame.display.update()
     r.clock.tick(60)
 
