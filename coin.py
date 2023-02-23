@@ -16,8 +16,17 @@ class Coin:
         self.speed = 1
 
     def Render(self, _id):
+        if r.runs - r.magnet_start < 1000:
+            if abs(r.objects[_id][1] - r.player_rect.x) > r.diff:
+                try:
+                    r.objects[_id][1] += (r.player_rect.x - self.Rect.x)/((r.player_rect.y - self.Rect.y)/r.diff)
+                except:
+                    pass
+            elif abs(r.objects[_id][1] - r.player_rect.x) <= r.diff:
+                r.objects[_id][1] = r.player_rect.x
+                
         r.screen.blit(self.Surf,(r.objects[_id][1],r.objects[_id][2]))
-    
+
     def Collide(self, _id):
         if self.Rect.colliderect(r.player_rect):
             if r.objects[_id][3]:

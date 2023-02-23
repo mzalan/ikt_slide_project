@@ -12,5 +12,5 @@ def StartGame():
     r.Points = 0
     r.Coins = 0
     r.bounce_data = None
-    r.player_rect.x = 0
+    r.player_rect.x = 960
     r.elapsed = 0

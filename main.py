@@ -10,6 +10,7 @@ from Bouncepad import *
 from Missile import *
 from menu import *
 from Speed import *
+from Magnet import *
 
 pygame.init()
 
@@ -20,11 +21,11 @@ def Generating(cond):
         r.objCount += 1
     for i in range(list(r.objects.keys())[0], r.objCount):
         if r.objects[i][0] == 1:
-            Render(Speed, i)
+            Render(Magnet, i)
         elif r.objects[i][0] == 2:
-            Render(Bouncepad, i)
+            Render(Coin, i)
         elif r.objects[i][0] == 3:
-            Render(Missile, i)
+            Render(Coin, i)
 
 while True:
     r.click = False
@@ -91,6 +92,8 @@ while True:
     elif r.Run == 2:
         GameOver()
 
+    if r.runs - r.magnet_start < 1000:
+        MagnetActivation()
 
     pygame.display.update()
     r.clock.tick(60)

@@ -45,7 +45,7 @@ class Globals:
         self.Points = 0
         self.Best = 0
 
-        self.Run = 1 #értéke megmutatja, hogy melyik felületre kell váltani 0 - menu, 1 - játék, 2 - game over, 3 - 
+        self.Run = 0 #értéke megmutatja, hogy melyik felületre kell váltani 0 - menu, 1 - játék, 2 - game over, 3 - 
 
         self.Coins = 0
         self.elapsed = 0
@@ -54,6 +54,9 @@ class Globals:
         self.objCount = 0
         self.click = False
         self.runs = 0
+
+        self.magnet_start = -1001
+
         # self.coin_rect = [85, 85, random.randint(100,1800), -100]
 
     def SelfRet(self):
