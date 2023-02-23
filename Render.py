@@ -35,4 +35,4 @@ def Render(Class, _id):
         if r.objects[_id+1][1] == None:
             pass
     except:
-        r.objects[_id+1] = [random.randint(1,3), random.randint(100,1820), r.spawnPoint, True]
+        r.objects[_id+1] = [random.randint(1,r.obj_type), random.randint(100,1820), r.spawnPoint, True]

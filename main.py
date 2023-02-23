@@ -11,6 +11,8 @@ from Missile import *
 from menu import *
 from Speed import *
 from Magnet import *
+from Shield import *
+
 
 pygame.init()
 
@@ -18,14 +20,12 @@ pygame.init()
 def Generating(cond):
 
     if cond:
-        r.objCount += 1
+        r.objCount += 2
     for i in range(list(r.objects.keys())[0], r.objCount):
-        if r.objects[i][0] == 1:
+        if r.objects[i][0] == 2:
+            Render(Shield, i)
+        else:
             Render(Magnet, i)
-        elif r.objects[i][0] == 2:
-            Render(Coin, i)
-        elif r.objects[i][0] == 3:
-            Render(Coin, i)
 
 while True:
     r.click = False
@@ -55,6 +55,10 @@ while True:
 
             if event.key == pygame.K_r and r.Run == 2:
                 StartGame()
+            
+            if event.key == pygame.K_e:
+                r.Run = 2
+
             
         if event.type == pygame.MOUSEBUTTONDOWN and (r.Run == 0 or r.Run == 2):
             r.click = True
@@ -87,14 +91,34 @@ while True:
             Bounce(r.bounce_data[0],r.bounce_data[1], r.bounce_data[2])
 
         PlayerBlit(r.Run)
+
+
+        # s_powers = r.powerups
+        # s_powers.sort(key = lambda x: x[0])
+
+        drawables = 0
+        starts = []
+        for i in range(len(r.powerups)):
+            if r.runs - r.powerups[i][0] < 1000:
+                starts.append([r.runs - r.powerups[i][0], r.powerup_img[i], i])
         
+        starts.sort(key = lambda x: x[0])
+        for i in range(len(starts)):
+    
+            if i == 0:
+                pos = 0
+            if i == 1:
+                pos = 1570
+            PowerupActivation(starts[i][1], starts[i][2], pos)
+
+
         r.runs += 1   
     elif r.Run == 2:
         GameOver()
 
-    if r.runs - r.magnet_start < 1000:
-        MagnetActivation()
 
+        
+    
     pygame.display.update()
     r.clock.tick(60)
 

@@ -17,9 +17,10 @@ class Coin:
 
     def Render(self, _id):
         if r.runs - r.magnet_start < 1000:
+            r.objects[_id][2] += r.diff
             if abs(r.objects[_id][1] - r.player_rect.x) > r.diff:
                 try:
-                    r.objects[_id][1] += (r.player_rect.x - self.Rect.x)/((r.player_rect.y - self.Rect.y)/r.diff)
+                    r.objects[_id][1] += (r.player_rect.x - self.Rect.x)/((r.player_rect.y - self.Rect.y)/(r.diff * 2))
                 except:
                     pass
             elif abs(r.objects[_id][1] - r.player_rect.x) <= r.diff:
