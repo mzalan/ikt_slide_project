@@ -5,8 +5,6 @@ from Globals import *
 img = pygame.image.load(os.path.join('assets', 'coin.png'))
 
 class Coin:
-    global speed
-    speed = 1
     def __init__(self, xpos, ypos):
         self.Surf = pygame.Surface((86.4,86.4))
         width = self.Surf.get_rect().width
@@ -16,16 +14,19 @@ class Coin:
         self.speed = 1
 
     def Render(self, _id):
-        if r.runs - r.magnet_start < 1000:
-            r.objects[_id][2] += r.diff
-            if abs(r.objects[_id][1] - r.player_rect.x) > r.diff:
-                try:
-                    r.objects[_id][1] += (r.player_rect.x - self.Rect.x)/((r.player_rect.y - self.Rect.y)/(r.diff * 2))
-                except:
-                    pass
-            elif abs(r.objects[_id][1] - r.player_rect.x) <= r.diff:
-                r.objects[_id][1] = r.player_rect.x
-                
+        for i in range(len(r.powerups)):
+            if r.powerups[i][0] == 0:
+                if r.runs - r.powerups[i][1] < r.power_upgrades[r.powerups[i][0]]:
+                    r.objects[_id][2] += 14
+                    if abs(r.objects[_id][1] - r.player_rect.x) > r.diff:
+                        try:
+                            r.objects[_id][1] += (r.player_rect.x - self.Rect.x)/((r.player_rect.y - self.Rect.y)/(r.diff * 2))
+                        except:
+                            pass
+                elif abs(r.objects[_id][1] - r.player_rect.x) <= r.diff:
+                    r.objects[_id][1] = r.player_rect.x
+                break
+  
         r.screen.blit(self.Surf,(r.objects[_id][1],r.objects[_id][2]))
 
     def Collide(self, _id):

@@ -38,15 +38,15 @@ class Globals:
         self.objects = {}
         self.spawnPoint = -100
 
-        self.obj_type = 2
-        self.objects[0] = [random.randint(1,self.obj_type), random.randint(100,1800), self.spawnPoint, True] #objects dictionary: az azonosító a key (0-tól végtelenig)
+        self.obj_type = 9
+        self.objects[0] = [1, random.randint(100,1800), self.spawnPoint, True] #objects dictionary: az azonosító a key (0-tól végtelenig)
     #                                                                    értéklista 0.eleme a renderelések száma, 1. az xpozíció, 2. az y pozíció 
         self.diff = 5
         self.diffCap = 35
         self.Points = 0
         self.Best = 0
 
-        self.Run = 1 #értéke megmutatja, hogy melyik felületre kell váltani 0 - menu, 1 - játék, 2 - game over, 3 - 
+        self.Run = 0 #értéke megmutatja, hogy melyik felületre kell váltani 0 - menu, 1 - játék, 2 - game over, 3 - 
 
         self.Coins = 0
         self.elapsed = 0
@@ -56,12 +56,12 @@ class Globals:
         self.click = False
         self.runs = 0
 
-        self.powerup_img = [pygame.image.load(os.path.join('assets', 'magnet.png')), pygame.image.load(os.path.join('assets', 'shield.png'))]
-        self.powerups = []
-        for i in range(2):
-            self.powerups.append([-1001, i])
 
+        self.powerup_img = [pygame.image.load(os.path.join('assets', 'magnet.png')), pygame.image.load(os.path.join('assets', 'shield.png')), pygame.image.load(os.path.join('assets', 'speed.png')), pygame.image.load(os.path.join('assets', 'laser.png'))]
+        self.powerups = []
+        self.power_upgrades = [1000, 1000, 200, 1200]
         
+        self.setCap = True
 
     def SelfRet(self):
         return self

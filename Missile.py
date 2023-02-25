@@ -55,7 +55,12 @@ class Missile:
     
     def Collide(self, _id):
         if self.Rect.colliderect(r.player_rect):
-            r.Run = 2
+            for i in range(len(r.powerups)):
+                if r.powerups[i][0] == 1 or r.powerups[i][0] == 2:
+                    r.objects[_id][3] = False
+                    return [i, r.powerups[i][0]]
+            else:
+                r.Run = 2
             
     def Speed(self, _id):
         # print(r.objects)

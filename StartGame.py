@@ -14,5 +14,15 @@ def StartGame():
     r.bounce_data = None
     r.player_rect.x = 960
     r.elapsed = 0
-    r.magnet_start = -1001
-    r.shield_start = -1001
+    r.protected = False
+    r.powerups = []
+
+def ShieldGame():
+    r.bounce_data = None
+    r.elapsed = 0
+    r.objCount = 0
+    r.objects = {}
+    r.objects[0] = [random.randint(1,r.obj_type), random.randint(100,1800), r.spawnPoint, True]
+    r.protected = False
+
+

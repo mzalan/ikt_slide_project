@@ -24,11 +24,11 @@ def Render(Class, _id):
     if r.objects[_id][3]:
         Class.Render(c, _id)
 
-    Class.Collide(c, _id)
+    col = Class.Collide(c, _id)
 
-    if r.objects[_id][2] > 1070 and _id == min(r.objects.keys()):
-            del r.objects[_id]
-            r.Points += r.diff * 2
+    if (r.objects[_id][2] > 1070 or r.objects[_id][2] < -100) and _id == min(r.objects.keys()):
+        del r.objects[_id]
+        r.Points += r.diff * 2
 
     
     try:
@@ -36,3 +36,6 @@ def Render(Class, _id):
             pass
     except:
         r.objects[_id+1] = [random.randint(1,r.obj_type), random.randint(100,1820), r.spawnPoint, True]
+
+
+    return col
