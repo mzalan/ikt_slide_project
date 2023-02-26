@@ -13,13 +13,14 @@ from Speed import *
 from Magnet import *
 from Shield import *
 from Turbo import *
-from Laser import *
+from Turret import *
+from Bullet import *
+from Upgrade import *
 
 pygame.init()
 
 
 def Generating(cond):
-
     if cond:
         r.objCount += 2
     for i in range(list(r.objects.keys())[0], r.objCount):
@@ -45,8 +46,10 @@ def Generating(cond):
                     r.powerups[col[0]][1] -= (1000 - (r.runs - r.powerups[col[0]][1])) + 1
                     del r.powerups[col[0]]
                     break
+        elif r.objects[i][0] == 10:
+            Render(Bullet, i)
         else:
-            Render(Coin, i)
+            Render(Laser, i)
 
 while True:
     r.click = False
@@ -80,7 +83,7 @@ while True:
                 r.Run = 2
 
             
-        if event.type == pygame.MOUSEBUTTONDOWN and (r.Run == 0 or r.Run == 2):
+        if event.type == pygame.MOUSEBUTTONDOWN:
             r.click = True
                 
 
@@ -118,10 +121,18 @@ while True:
             if r.runs - r.powerups[i][1] < r.power_upgrades[r.powerups[i][0]]:
                 drawables += 1
                 pos = drawables * 350
-                PowerupActivation(r.powerups[i][2], i, pos)
 
                 if not r.setCap and (r.powerups[i][0] == 1 or r.powerups[i][0] == 3):
                     r.powerups[i][1] += 1
+
+                if r.powerups[i][0] == 3 and r.click and r.setCap and r.ammo != 0:
+                    r.objCount += 1
+                    bullet = {max(r.objects.keys()): [10, r.player_rect.x + 22.5, r.player_rect.y, True]}
+                    r.objects.update(bullet)
+                   
+                    if r.ammo > 0:
+                        r.ammo -= 1
+                PowerupActivation(r.powerups[i][2], i, pos)
 
             elif r.runs - r.powerups[i][1] == r.power_upgrades[r.powerups[i][0]]:
                 to_delete.append([i, r.powerups[i][0]])
@@ -139,18 +150,8 @@ while True:
     elif r.Run == 2:
         GameOver()
 
-    # t = r.score_font.render(str(round(r.diff,0)).split(".")[0], True, "#6b0101")
-    # tr = t.get_rect(center=(960,400))
-    # r.screen.blit(t, tr)
-
+    elif r.Run == 3:
+        Upgrades()
 
     pygame.display.update()
     r.clock.tick(60)
-
-            #WALL RENDERING 
-            # col = Render(Wall, i)
-            # if col != None:
-            #     ShieldGame()
-            #     r.powerups[col][1] -= (1000 - (r.runs - r.powerups[col][1])) + 1
-            #     del r.powerups[col]
-            #     break

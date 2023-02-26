@@ -13,9 +13,6 @@ def Render(Class, _id):
         
     if _id+1 not in r.objects.keys():
         c = Class(r.objects[_id][1],r.objects[_id][2])
-
-        
-            
     else:
         r.objects[_id][2] += r.diff * Class.Speed(Class(0,0), _id)
         c = Class(r.objects[_id][1],r.objects[_id][2])
@@ -36,6 +33,5 @@ def Render(Class, _id):
             pass
     except:
         r.objects[_id+1] = [random.randint(1,r.obj_type), random.randint(100,1820), r.spawnPoint, True]
-
 
     return col

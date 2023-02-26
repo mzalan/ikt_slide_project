@@ -46,13 +46,13 @@ class Globals:
         self.Points = 0
         self.Best = 0
 
-        self.Run = 0 #értéke megmutatja, hogy melyik felületre kell váltani 0 - menu, 1 - játék, 2 - game over, 3 - 
+        self.Run = 0 #értéke megmutatja, hogy melyik felületre kell váltani 0 - menu, 1 - játék, 2 - game over, 3 - upgrades
 
         self.Coins = 0
         self.elapsed = 0
         self.bounce_data = None
 
-        self.objCount = 0
+        self.objCount = 1
         self.click = False
         self.runs = 0
 
@@ -62,6 +62,9 @@ class Globals:
         self.power_upgrades = [1000, 1000, 200, 1200]
         
         self.setCap = True
+
+        self.ammo = 4
+
 
     def SelfRet(self):
         return self

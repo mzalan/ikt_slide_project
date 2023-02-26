@@ -1,6 +1,7 @@
 import pygame
 import os
 from Globals import *
+from Turret import *
 
 img = pygame.image.load(os.path.join('assets', 'missile.png'))
 w1 = pygame.image.load(os.path.join('assets', 'warning.png'))
@@ -54,17 +55,24 @@ class Missile:
         
     
     def Collide(self, _id):
-        if self.Rect.colliderect(r.player_rect):
+        if self.Rect.colliderect(r.player_rect) and r.objects[_id][3]:
             for i in range(len(r.powerups)):
                 if r.powerups[i][0] == 1 or r.powerups[i][0] == 2:
                     r.objects[_id][3] = False
                     return [i, r.powerups[i][0]]
             else:
                 r.Run = 2
-            
+
+        for i in range(list(r.objects.keys())[0], r.objCount):
+            try:
+                if r.objects[i][0] == 10:
+                    if self.Rect.colliderect(Laser(r.objects[i][1], r.objects[i][2]).Rect):  
+                        r.objects[_id][3] = False
+            except:
+                pass
+
+
     def Speed(self, _id):
-        # print(r.objects)
-        # print(_id)
         if r.runs - r.objects[_id][4] > 100:
             self.speed = 7
         else:

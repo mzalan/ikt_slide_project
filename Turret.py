@@ -20,7 +20,8 @@ class Laser:
         if self.Rect.colliderect(r.player_rect) and r.objects[_id][3]:
             r.objects[_id][3] = False
             p = 3
-
+            r.ammo = 4
+            
             for i in range(len(r.powerups)):
                 if p in r.powerups[i]:
                     if r.runs - r.powerups[i][1] < r.power_upgrades[r.powerups[i][0]]:

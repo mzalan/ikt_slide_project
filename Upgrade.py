@@ -2,7 +2,7 @@ import pygame
 import os
 from Globals import *
 from menu import *
-from Laser import *
+from Turret import *
 from Magnet import *
 from Shield import *
 from Turbo import *

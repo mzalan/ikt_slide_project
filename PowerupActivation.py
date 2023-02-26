@@ -1,7 +1,11 @@
 from Globals import * 
 
-
+shot_time = 0
+pre_ammo = 0
 def PowerupActivation(img, i, pos):
+    global pre_ammo
+    global shot_time
+
     duration = r.power_upgrades[r.powerups[i][0]]
 
     surf = pygame.Surface((90,90))
@@ -33,6 +37,36 @@ def PowerupActivation(img, i, pos):
         except:
             prog.fill((vividness, 0, 0))
         
+
+    if r.powerups[i][0] == 3:
+        if pre_ammo != None and pre_ammo > r.ammo:
+            shot_time = r.runs
+            
+        if shot_time != None and r.runs - shot_time > 20 and r.ammo < 4:
+            r.ammo += 1
+            shot_time = r.runs
+
+        
+
+        pre_ammo = r.ammo
+        
+        abase = pygame.Surface((100,15))
+
+        ammo = pygame.Surface((96,11))
+        ammo.fill("white")
+        
+        ammo_prog = pygame.Surface((r.ammo * 24,11))
+        ammo_prog.fill("#de8a02")
+
+        line = pygame.Surface((2,11))
+
+        r.screen.blit(abase, (r.player_rect.x, r.player_rect.y+100))
+        r.screen.blit(ammo, (r.player_rect.x+2, r.player_rect.y+102))
+        r.screen.blit(ammo_prog, (r.player_rect.x+2, r.player_rect.y+102))
+
+        r.screen.blit(line, (r.player_rect.x+24, r.player_rect.y+102))
+        r.screen.blit(line, (r.player_rect.x+49, r.player_rect.y+102))
+        r.screen.blit(line, (r.player_rect.x+74, r.player_rect.y+102))
 
 
     r.screen.blit(surf,rect)
