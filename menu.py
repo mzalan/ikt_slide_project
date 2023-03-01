@@ -2,12 +2,12 @@ import pygame
 from Globals import *
 from StartGame import *
 
-def Menu(screen):
-
+def Menu():
+    r.Run = 0
     color_light = (170,170,170)
     color_dark = "#111112"
-    width = screen.get_width()
-    height = screen.get_height()
+    width = r.screen.get_width()
+    height = r.screen.get_height()
     mouse = pygame.mouse.get_pos()
     
     
@@ -42,7 +42,7 @@ def Menu(screen):
         drawing = pygame.draw.rect(play_draw_surf, color_light, play_draw_rect)
         
         play_draw_surf.fill("#f5eeda")
-        screen.blit(play_draw_surf, drawing)
+        r.screen.blit(play_draw_surf, drawing)
 
         play_text = r.score_font.render("Play", True, "black")
         play_rect = play_text.get_rect(center=(960,440))
@@ -51,7 +51,7 @@ def Menu(screen):
     else:
        
         drawing = pygame.draw.rect(play_draw_surf, "red",play_draw_rect)
-        screen.blit(play_draw_surf, drawing)
+        r.screen.blit(play_draw_surf, drawing)
 
         play_text = r.score_font.render("Play", True, "white")
         play_rect = play_text.get_rect(center=(960,440))
@@ -63,16 +63,16 @@ def Menu(screen):
         drawing = pygame.draw.rect(upgrade_draw_surf, color_light, upgrade_draw_rect)
         
         upgrade_draw_surf.fill("#f5eeda")
-        screen.blit(upgrade_draw_surf, drawing)
+        r.screen.blit(upgrade_draw_surf, drawing)
 
         upgrade_text = r.score_font.render("Upgrade", True, "black")
         upgrade_rect = upgrade_text.get_rect(center=(960,640))
         if r.click:
-            StartGame()
+            r.Run = 3
     else:
        
         drawing = pygame.draw.rect(upgrade_draw_surf, "red",upgrade_draw_rect)
-        screen.blit(upgrade_draw_surf, drawing)
+        r.screen.blit(upgrade_draw_surf, drawing)
 
         upgrade_text = r.score_font.render("Upgrade", True, "white")
         upgrade_rect = upgrade_text.get_rect(center=(960,640))
@@ -83,7 +83,7 @@ def Menu(screen):
         drawing = pygame.draw.rect(exit_draw_surf, color_light, exit_draw_rect)
         
         exit_draw_surf.fill("#f5eeda")
-        screen.blit(exit_draw_surf, drawing)
+        r.screen.blit(exit_draw_surf, drawing)
 
         exit_text = r.score_font.render("Exit", True, "black")
         exit_rect = exit_text.get_rect(center=(960,840))
@@ -92,7 +92,7 @@ def Menu(screen):
     else:
        
         drawing = pygame.draw.rect(exit_draw_surf, "red",exit_draw_rect)
-        screen.blit(exit_draw_surf, drawing)
+        r.screen.blit(exit_draw_surf, drawing)
 
         exit_text = r.score_font.render("Exit", True, "white")
         exit_rect = exit_text.get_rect(center=(960,840))

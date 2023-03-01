@@ -1,0 +1,4 @@
+magnet:50
+shield:50
+turbo:50
+turret:50

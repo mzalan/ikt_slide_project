@@ -16,6 +16,9 @@ from Turbo import *
 from Turret import *
 from Bullet import *
 from Upgrade import *
+from Save import *
+
+Fajlolvas()
 
 pygame.init()
 
@@ -90,7 +93,7 @@ while True:
     r.screen.fill("lightblue")
 
     if r.Run == 0:
-        Menu(r.screen)
+        Menu()
 
     elif r.Run == 1:
 
