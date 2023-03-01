@@ -30,7 +30,10 @@ def PowerupActivation(img, i, pos):
     prog = pygame.Surface((285 - ((r.runs - r.powerups[i][1])/duration * 285),50))
 
     if r.runs - r.powerups[i][1] <= duration/2:
-        prog.fill((vividness*((r.runs - r.powerups[i][1])/((duration)/2)),vividness, 0))
+        try:
+            prog.fill((vividness*((r.runs - r.powerups[i][1])/(int((duration)/2))),vividness, 0))
+        except:
+            prog.fill((0, vividness, 0))
     else:
         try:
             prog.fill((vividness,int(vividness-(vividness*((r.runs - (r.powerups[i][1] + duration/2))/duration))*2.03), 0))

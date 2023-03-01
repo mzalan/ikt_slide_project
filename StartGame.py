@@ -16,6 +16,7 @@ def StartGame():
     r.elapsed = 0
     r.protected = False
     r.powerups = []
+    r.setCap = True
 
 def ShieldGame():
     r.bounce_data = None
