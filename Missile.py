@@ -34,7 +34,7 @@ class Missile:
 
         if rel_runs > 100:
             r.screen.blit(self.Surf,(r.objects[_id][1],r.objects[_id][2]))
-        elif r.runs - r.objects[_id][4] > 300:
+        elif rel_runs > 300:
             self.speed = 0
         else:
             if rel_runs < 68:
@@ -66,7 +66,7 @@ class Missile:
         for i in range(list(r.objects.keys())[0], r.objCount):
             try:
                 if r.objects[i][0] == 10:
-                    if self.Rect.colliderect(Laser(r.objects[i][1], r.objects[i][2]).Rect):  
+                    if self.Rect.colliderect(Laser(r.objects[i][1], r.objects[i][2]).Rect) and r.runs - r.objects[_id][4] > 100:  
                         r.objects[_id][3] = False
             except:
                 pass

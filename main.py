@@ -17,6 +17,8 @@ from Turret import *
 from Bullet import *
 from Upgrade import *
 from Save import *
+from Generating import *
+
 
 Fajlolvas()
 

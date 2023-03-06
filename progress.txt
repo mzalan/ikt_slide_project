@@ -1,4 +1,4 @@
-magnet:50
-shield:50
-turbo:50
-turret:50
+magnet:0
+shield:0
+turbo:0
+turret:0
