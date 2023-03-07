@@ -7,7 +7,7 @@ img = pygame.image.load(os.path.join('assets', 'wall.png'))
 
 class Wall:
     def __init__(self,xpos, ypos):
-        self.Surf = pygame.Surface((100,100))
+        self.Surf = pygame.Surface((96,96))
         width = self.Surf.get_rect().width
         height = self.Surf.get_rect().height
         self.Surf = pygame.transform.scale(img, (width, height))

@@ -3,21 +3,17 @@ import math
 
 
 def ObjectFill():
-
-    lista = []
-
-
     holeCount = random.randint(1,4)
     holes = []
     totalHoles = 0
 
     for i in range(holeCount):
         
-        r = random.randint(2,5)
-        if i == holeCount - 1 and totalHoles == 15 and r == 5:
+        s = random.randint(2,5)
+        if i == holeCount - 1 and totalHoles == 15 and s == 5:
             holes.append(4)
         else:
-            holes.append(r)
+            holes.append(s)
         totalHoles += holes[i]
 
 
@@ -46,8 +42,8 @@ def ObjectFill():
             
 
         else:
-            r = random.randint(1,4)
-            if r == 1:
+            s = random.randint(1,4)
+            if s == 1:
                 if i == holeCount:
                     blocks.insert(0, 0)
                 else:
@@ -55,15 +51,33 @@ def ObjectFill():
 
 
     i = 0
+    x = 0
+    c = True
     while i < len(blocks):
-        #########################
         if c:
-            r.objects[len(r.objects)] = [1, ]
+            for bl in range(blocks[i]):
+                r.objects[max(r.objects.keys())+1] = [5, x * 96 + bl * 96, -100, True]
+                r.objCount += 1
+            else:
+                x += blocks[i]
             if i+1 > len(holes):
                 i += 1
         else:
+            
             if i+1 <= len(holes):
-                lista.append(holes[i])
+                x += holes[i]
                 i += 1
+                
         
         c = not c
+
+
+
+def ObjectClean():
+    for black in r.blacklist:
+        del r.objects[black]
+
+    if len(r.objects) == 0:
+        r.objects[-1] = [1, random.randint(100,1800), r.spawnPoint, False]
+        r.objCount = -1
+    r.blacklist = []

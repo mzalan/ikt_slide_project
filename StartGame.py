@@ -7,7 +7,7 @@ def StartGame():
     r.diff = 5
     r.objCount = 0
     r.objects = {}
-    r.objects[0] = [random.randint(1,r.obj_type), random.randint(100,1800), r.spawnPoint, True]
+    r.objects[-1] = [1, random.randint(100,1800), r.spawnPoint, False]
     r.runs = 0
     r.Points = 0
     r.Coins = 0
@@ -23,7 +23,6 @@ def ShieldGame():
     r.elapsed = 0
     r.objCount = 0
     r.objects = {}
-    r.objects[0] = [random.randint(1,r.obj_type), random.randint(100,1800), r.spawnPoint, True]
     r.protected = False
 
 

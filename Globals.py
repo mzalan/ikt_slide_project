@@ -39,7 +39,7 @@ class Globals:
         self.spawnPoint = -100
 
         self.obj_type = 9
-        self.objects[0] = [1, random.randint(100,1800), self.spawnPoint, True] #objects dictionary: az azonosító a key (0-tól végtelenig)
+        self.objects[-1] = [1, random.randint(100,1800), self.spawnPoint, False] #objects dictionary: az azonosító a key (0-tól végtelenig)
     #                                                                    értéklista 0.eleme a renderelések száma, 1. az xpozíció, 2. az y pozíció 
         self.diff = 5
         self.diffCap = 35
@@ -66,6 +66,9 @@ class Globals:
 
         self.ammo = 4
 
+        self.ratext = False
+
+        self.blacklist = []
 
     def SelfRet(self):
         return self

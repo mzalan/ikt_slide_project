@@ -27,7 +27,7 @@ pygame.init()
 
 def Generating(cond):
     if cond:
-        r.objCount += 2
+        ObjectFill()
     for i in range(list(r.objects.keys())[0], r.objCount):
         if r.objects[i][0] == 2:
             Render(Turbo, i)
@@ -54,7 +54,7 @@ def Generating(cond):
         elif r.objects[i][0] == 10:
             Render(Bullet, i)
         else:
-            Render(Laser, i)
+            Render(Shield, i)
 
 while True:
     r.click = False
@@ -99,7 +99,7 @@ while True:
 
     elif r.Run == 1:
 
-        if r.runs % 50 == 0:
+        if r.runs % 120 == 0:
             if r.diff < r.diffCap:
                 r.diff += 0.2
             else:
@@ -110,8 +110,8 @@ while True:
         else:
             Generating(False)
 
-        if r.runs % 5 == 0 and r.Run == 1:
-            r.Points += 10
+        if r.runs % 3 == 0 and r.Run == 1:
+            r.Points += r.diff * 1.3
 
         if r.bounce_data == None:
             BoostMoving()
@@ -149,6 +149,12 @@ while True:
                 r.diff = r.powerups[to_delete[0][i]][3]
                 r.setCap = True
             del r.powerups[to_delete[i][0]]
+
+        # asd = r.small_font.render(str(r.objects), True, "#5800d4")
+        # sad = asd.get_rect(center=(960,400))
+        # r.screen.blit(asd,sad)
+
+        ObjectClean()
 
         r.runs += 1  
 
