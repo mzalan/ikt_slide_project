@@ -18,7 +18,7 @@ def Upgrades():
 
     coin_text = r.score_font.render("Your Coins:", True, "black")
     coin_rect = coin_text.get_rect(center=(960,90))
-    coin_szam = r.gover_font.render(str(r.Coins), True, "black")
+    coin_szam = r.gover_font.render(str(r.Coins), True, "#856e1c")
     coin_szam_rect = coin_szam.get_rect(center=(960,185))
 
     magnet_title = r.gover_font.render("Magnet", True, "black")
@@ -241,19 +241,13 @@ def Upgrades():
 
     vonal = pygame.Surface((2,11))
     
-    magnet_gomb = pygame.Surface((370,50))
-    magnet_gomb.fill("green")
-    turbo_gomb = pygame.Surface((370,50))
-    turbo_gomb.fill("green")
-    shield_gomb = pygame.Surface((370,50))
-    shield_gomb.fill("green")
-    turret_gomb = pygame.Surface((370,50))
-    turret_gomb.fill("green")
+    gomb = pygame.Surface((270,45))
+    gomb.fill("#00c700")
     
-    r.screen.blit(magnet_gomb, (475,520))
-    r.screen.blit(turbo_gomb, (475,880))
-    r.screen.blit(shield_gomb, (1035,520))
-    r.screen.blit(turret_gomb, (1035,880))
+    r.screen.blit(gomb, (525,520))
+    r.screen.blit(gomb, (525,880))
+    r.screen.blit(gomb, (1085,520))
+    r.screen.blit(gomb, (1085,880))
 
     r.screen.blit(focsik, (450,480))
     r.screen.blit(mellekcsik, (452,482))
