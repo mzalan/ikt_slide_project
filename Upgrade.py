@@ -210,6 +210,19 @@ def Upgrades():
 
         back_text = r.score_font.render("Back", True, "white")
         back_rect = back_text.get_rect(center=(300,900))
+    
+    
+    r.screen.blit(coin_text, coin_rect)
+    r.screen.blit(coin_szam, coin_szam_rect)
+    r.screen.blit(magnet_title_meret, magnet_rect1)
+    r.screen.blit(magnet_img_meret, magnet_rect2)
+    r.screen.blit(turbo_title_meret, turbo_rect1)
+    r.screen.blit(turbo_img_meret, turbo_rect2)
+    r.screen.blit(shield_title_meret, shield_rect1)
+    r.screen.blit(shield_img_meret, shield_rect2)
+    r.screen.blit(turret_title_meret, turret_rect1)
+    r.screen.blit(turret_img_meret, turret_rect2)
+    r.screen.blit(back_text, back_rect)
 
 
     focsik = pygame.Surface((420,15))
@@ -227,8 +240,20 @@ def Upgrades():
     egyegyseg4.fill("#de8a02")
 
     vonal = pygame.Surface((2,11))
-    gomb = pygame.Surface((370,50))
-    gomb.fill("green")
+    
+    magnet_gomb = pygame.Surface((370,50))
+    magnet_gomb.fill("green")
+    turbo_gomb = pygame.Surface((370,50))
+    turbo_gomb.fill("green")
+    shield_gomb = pygame.Surface((370,50))
+    shield_gomb.fill("green")
+    turret_gomb = pygame.Surface((370,50))
+    turret_gomb.fill("green")
+    
+    r.screen.blit(magnet_gomb, (475,520))
+    r.screen.blit(turbo_gomb, (475,880))
+    r.screen.blit(shield_gomb, (1035,520))
+    r.screen.blit(turret_gomb, (1035,880))
 
     r.screen.blit(focsik, (450,480))
     r.screen.blit(mellekcsik, (452,482))
@@ -238,8 +263,6 @@ def Upgrades():
     r.screen.blit(vonal, (617,482))
     r.screen.blit(vonal, (701,482))
     r.screen.blit(vonal, (785,482))
-
-    r.screen.blit(gomb, (475,500))
 
     r.screen.blit(focsik, (450,840))
     r.screen.blit(mellekcsik, (452,842))
@@ -270,14 +293,4 @@ def Upgrades():
 
 
 
-    r.screen.blit(coin_text, coin_rect)
-    r.screen.blit(coin_szam, coin_szam_rect)
-    r.screen.blit(magnet_title_meret, magnet_rect1)
-    r.screen.blit(magnet_img_meret, magnet_rect2)
-    r.screen.blit(turbo_title_meret, turbo_rect1)
-    r.screen.blit(turbo_img_meret, turbo_rect2)
-    r.screen.blit(shield_title_meret, shield_rect1)
-    r.screen.blit(shield_img_meret, shield_rect2)
-    r.screen.blit(turret_title_meret, turret_rect1)
-    r.screen.blit(turret_img_meret, turret_rect2)
-    r.screen.blit(back_text, back_rect)
+    
