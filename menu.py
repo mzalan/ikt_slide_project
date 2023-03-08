@@ -88,7 +88,8 @@ def Menu():
         exit_text = r.score_font.render("Exit", True, "black")
         exit_rect = exit_text.get_rect(center=(960,840))
         if r.click:
-            StartGame()
+            pygame.quit()
+            exit()
     else:
        
         drawing = pygame.draw.rect(exit_draw_surf, "red",exit_draw_rect)

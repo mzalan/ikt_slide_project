@@ -70,6 +70,8 @@ class Globals:
 
         self.blacklist = []
 
+        self.beolvasottadatok = []
+
     def SelfRet(self):
         return self
 
