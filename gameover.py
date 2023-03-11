@@ -63,10 +63,10 @@ def GameOver():
 
 
     back_text = r.score_font.render("Back", True, "black")
-    back_rect = back_text.get_rect(center=(300,870))
+    back_rect = back_text.get_rect(center=(400,870))
 
     back_draw_surf = pygame.Surface((200,80))
-    back_draw_rect = back_draw_surf.get_rect(center=(300,870))
+    back_draw_rect = back_draw_surf.get_rect(center=(400,870))
 
     #back gomb
 
@@ -77,7 +77,7 @@ def GameOver():
         r.screen.blit(back_draw_surf, drawing)
 
         back_text = r.score_font.render("Back", True, "black")
-        back_rect = back_text.get_rect(center=(300,870))
+        back_rect = back_text.get_rect(center=(400,870))
         if r.click:
             Menu()
     else:
@@ -86,6 +86,6 @@ def GameOver():
         r.screen.blit(back_draw_surf, drawing)
 
         back_text = r.score_font.render("Back", True, "white")
-        back_rect = back_text.get_rect(center=(300,870))
+        back_rect = back_text.get_rect(center=(400,870))
     
     r.screen.blit(back_text, back_rect)

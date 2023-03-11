@@ -40,19 +40,28 @@ body {
 }
 
 
-#fejlesztesekkeret{
+#keret{
     border: solid 5px black;
     border-radius: 15px;
 }
 
-#kartya1{
+#fejleszteskartya1, #indexkartya1{
     border-radius: 15px;
     color: "#c2f9f8";
-    margin-top: 50px;
+    margin-top: 80px;
 }
 
-#kartya2{
+#fejleszteskartya2, #indexkartya2{
     border-radius: 15px;
     color: "#c2f9f8";
     margin-top: 5px;
+}
+
+#akadalykartya{
+    border-radius: 15px;
+    margin-top: 5px;
+}
+
+#fooldalkep{
+    height: 275px;
 }
