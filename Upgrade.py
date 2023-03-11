@@ -56,7 +56,7 @@ def Upgrades():
 
 
     back_text = r.score_font.render("Back", True, "black")
-    back_rect = back_text.get_rect(center=(300,900))
+    back_rect = back_text.get_rect(center=(300,909))
 
 
     magnet_draw_surf = pygame.Surface((450,300))
@@ -76,7 +76,7 @@ def Upgrades():
 
 
     back_draw_surf = pygame.Surface((200,80))
-    back_draw_rect = back_draw_surf.get_rect(center=(300,900))
+    back_draw_rect = back_draw_surf.get_rect(center=(300,909))
 
 
 #magnet rész
@@ -200,7 +200,7 @@ def Upgrades():
         r.screen.blit(back_draw_surf, drawing)
 
         back_text = r.score_font.render("Back", True, "black")
-        back_rect = back_text.get_rect(center=(300,900))
+        back_rect = back_text.get_rect(center=(300,909))
         if r.click:
             Menu()
     else:
@@ -209,7 +209,7 @@ def Upgrades():
         r.screen.blit(back_draw_surf, drawing)
 
         back_text = r.score_font.render("Back", True, "white")
-        back_rect = back_text.get_rect(center=(300,900))
+        back_rect = back_text.get_rect(center=(300,909))
     
     
     r.screen.blit(coin_text, coin_rect)

@@ -4,7 +4,55 @@
 }
 
 body {
-
-    background-color:lightblue;
     font-family: pixel;
+}
+
+#akadalytitle{
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+    font-variant: normal;
+    font-style: oblique;
+    color: black;
+}
+
+#kep{
+    width: 350px;
+    height: 350px;
+}
+
+.row{
+    padding: auto;
+}
+
+
+#fejleszteskep{
+    width: 300px;
+    height: 300px;
+    margin-left: 160px;
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+
+#table{
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+
+#fejlesztesekkeret{
+    border: solid 5px black;
+    border-radius: 15px;
+}
+
+#kartya1{
+    border-radius: 15px;
+    color: "#c2f9f8";
+    margin-top: 50px;
+}
+
+#kartya2{
+    border-radius: 15px;
+    color: "#c2f9f8";
+    margin-top: 5px;
 }

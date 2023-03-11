@@ -1,4 +1,5 @@
 from Globals import *
+from Upgrade import *
 
 def GameOver():
     # r.screen.fill("#93bfb4")
@@ -54,3 +55,37 @@ def GameOver():
     again_rect = again_text.get_rect(center=(960,860))
     r.screen.blit(again_text,again_rect)
 
+    color_light = (170,170,170)
+    color_dark = "#111112"
+    width = r.screen.get_width()
+    height = r.screen.get_height()
+    mouse = pygame.mouse.get_pos()
+
+
+    back_text = r.score_font.render("Back", True, "black")
+    back_rect = back_text.get_rect(center=(300,870))
+
+    back_draw_surf = pygame.Surface((200,80))
+    back_draw_rect = back_draw_surf.get_rect(center=(300,870))
+
+    #back gomb
+
+    if back_draw_rect.x <= mouse[0] <= back_draw_rect.x+back_draw_rect.w and back_draw_rect.y <= mouse[1] <= back_draw_rect.y+back_draw_rect.height:
+        drawing = pygame.draw.rect(back_draw_surf, color_light, back_draw_rect)
+
+        back_draw_surf.fill("#f5eeda")
+        r.screen.blit(back_draw_surf, drawing)
+
+        back_text = r.score_font.render("Back", True, "black")
+        back_rect = back_text.get_rect(center=(300,870))
+        if r.click:
+            Menu()
+    else:
+
+        drawing = pygame.draw.rect(back_draw_surf, "black",back_draw_rect)
+        r.screen.blit(back_draw_surf, drawing)
+
+        back_text = r.score_font.render("Back", True, "white")
+        back_rect = back_text.get_rect(center=(300,870))
+    
+    r.screen.blit(back_text, back_rect)
