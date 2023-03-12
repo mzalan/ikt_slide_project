@@ -2,7 +2,7 @@ from Globals import *
 from Upgrade import *
 
 def GameOver():
-    # r.screen.fill("#93bfb4")
+
     if r.Points > r.Best:
         gover_text = r.gover_font.render("NEW HIGH SCORE", True, "#5800d4")
 
@@ -42,7 +42,7 @@ def GameOver():
 
 
     coin_text1 = r.small_font.render("COINS COLLECTED", True, "#856e1c")
-    coin_text2 = r.score_font.render(str(round(r.Coins,0)).split('.')[0], True, "#856e1c")
+    coin_text2 = r.score_font.render(str(round(r.gamecoins,0)).split('.')[0], True, "#856e1c")
 
     coin_rect1 = coin_text1.get_rect(center=(960,620))
     r.screen.blit(coin_text1, coin_rect1)

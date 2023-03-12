@@ -1,4 +1,4 @@
-magnet:1
-shield:3
-turbo:2
+magnet:5
+turbo:5
+shield:5
 turret:5

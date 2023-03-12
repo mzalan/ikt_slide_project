@@ -33,6 +33,7 @@ class Bouncepad:
                         return [i, r.powerups[i][0]] 
                 else:
                     r.Run = 2
+                    r.Coins += r.gamecoins
             else:
                 if r.setCap:
                     r.elapsed = 0

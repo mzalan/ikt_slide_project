@@ -72,6 +72,10 @@ class Globals:
 
         self.beolvasottadatok = []
 
+        self.arak = [20,50,140,260,480, "MAX LEVEL!"]
+
+        self.gamecoins = 0
+
         self.wallSection = 0 # 0 inaktív, 1 - aktiváció, falszekció tulajdonságainak meghatározása, 2 - aktiválva
         self.wsdata = [None, None, None] # 0 - távolság a sorok között, 1 - sorok száma, 2 - r.runs upon aktiválás
 

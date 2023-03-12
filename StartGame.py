@@ -10,13 +10,13 @@ def StartGame():
     r.objects[-1] = [1, random.randint(100,1800), r.spawnPoint, False]
     r.runs = 0
     r.Points = 0
-    r.Coins = 0
     r.bounce_data = None
     r.player_rect.x = 960
     r.elapsed = 0
     r.protected = False
     r.powerups = []
     r.setCap = True
+    r.gamecoins = 0
 
 def ShieldGame():
     r.bounce_data = None

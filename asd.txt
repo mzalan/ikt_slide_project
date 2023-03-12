@@ -1,0 +1,4 @@
+magnet:1
+turbo:0
+shield:0
+turret:0

@@ -63,9 +63,9 @@ def PlayerBlit(cond):
         else:
             first_text = r.first_font.render(str(round(r.Points,0)).split(".")[0], True, "black")
 
-        second_text = r.first_font.render(str(round(r.Coins,0)).split(".")[0], True, "#856e1c")
+        second_text = r.first_font.render(str(round(r.gamecoins,0)).split(".")[0], True, "#856e1c")
         second_rect = second_text.get_rect(topright=(1915,5))
 
         r.screen.blit(first_text,(5,5)) 
-        r.screen.blit(second_text,second_rect) 
+        r.screen.blit(second_text,second_rect)
 

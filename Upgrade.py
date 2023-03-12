@@ -6,6 +6,7 @@ from Turret import *
 from Magnet import *
 from Shield import *
 from Turbo import *
+from Save import *
 
 def Upgrades():
 
@@ -242,12 +243,64 @@ def Upgrades():
     vonal = pygame.Surface((2,11))
     
     gomb = pygame.Surface((270,45))
-    gomb.fill("#00c700")
+
+    gomb_rect1 = gomb.get_rect(center=(660,540))
+    gomb_rect2 = gomb.get_rect(center=(660,900))
+    gomb_rect3 = gomb.get_rect(center=(1220,540))
+    gomb_rect4 = gomb.get_rect(center=(1220,900))
+
     
-    r.screen.blit(gomb, (525,520))
-    r.screen.blit(gomb, (525,880))
-    r.screen.blit(gomb, (1085,520))
-    r.screen.blit(gomb, (1085,880))
+    r.screen.blit(gomb, gomb_rect2)
+    r.screen.blit(gomb, gomb_rect3)
+    r.screen.blit(gomb, gomb_rect4)
+
+    if gomb_rect1.x <= mouse[0] <= gomb_rect1.x+gomb_rect1.w and gomb_rect1.y <= mouse[1] <= gomb_rect1.y+gomb_rect1.height:
+        drawing = pygame.draw.rect(gomb, "#e93e30", gomb_rect1)
+        gomb.fill("#02e602")
+        r.screen.blit(gomb, drawing)
+        if r.click:
+            Fejlesztes(0,"magnet")
+    else:
+        gomb.fill("#00c700")
+        drawing = pygame.draw.rect(gomb, "#00c700", gomb_rect1)
+        r.screen.blit(gomb, drawing)
+
+    if gomb_rect2.x <= mouse[0] <= gomb_rect2.x+gomb_rect2.w and gomb_rect2.y <= mouse[1] <= gomb_rect2.y+gomb_rect2.height:
+        drawing = pygame.draw.rect(gomb, "#e93e30", gomb_rect2)
+        gomb.fill("#02e602")
+        r.screen.blit(gomb, drawing)
+        if r.click:
+            Fejlesztes(1,"turbo")
+    else:
+        gomb.fill("#00c700")
+        drawing = pygame.draw.rect(gomb, "#00c700", gomb_rect2)
+        r.screen.blit(gomb, drawing)
+
+    if gomb_rect3.x <= mouse[0] <= gomb_rect3.x+gomb_rect3.w and gomb_rect3.y <= mouse[1] <= gomb_rect3.y+gomb_rect3.height:
+        drawing = pygame.draw.rect(gomb, "#e93e30", gomb_rect3)
+        gomb.fill("#02e602")
+        r.screen.blit(gomb, drawing)
+        if r.click:
+            Fejlesztes(2,"shield")
+    else:
+        gomb.fill("#00c700")
+        drawing = pygame.draw.rect(gomb, "#00c700", gomb_rect3)
+        r.screen.blit(gomb, drawing)
+
+        
+    if gomb_rect4.x <= mouse[0] <= gomb_rect4.x+gomb_rect4.w and gomb_rect4.y <= mouse[1] <= gomb_rect4.y+gomb_rect4.height:
+        drawing = pygame.draw.rect(gomb, "#e93e30", gomb_rect4)
+        gomb.fill("#02e602")
+        r.screen.blit(gomb, drawing)
+        if r.click:
+            Fejlesztes(3,"turret")
+    else:
+        gomb.fill("#00c700")
+        drawing = pygame.draw.rect(gomb, "#00c700", gomb_rect4)
+        r.screen.blit(gomb, drawing)
+
+    
+    
 
     r.screen.blit(focsik, (450,480))
     r.screen.blit(mellekcsik, (452,482))
@@ -285,6 +338,68 @@ def Upgrades():
     r.screen.blit(vonal, (1261,842))
     r.screen.blit(vonal, (1345,842))
 
+    arak = []
+
+    for i in range(0,4):
+        arak.append(r.arak[r.beolvasottadatok[i]])
+
+    if arak[0] == "MAX LEVEL!":
+        szam_title1 = r.small_font.render(str(arak[0]), True, "black")
+    else:
+        szam_title1 = r.first_font.render(str(arak[0]), True, "black")
+
+    if arak[1] == "MAX LEVEL!":
+        szam_title2 = r.small_font.render(str(arak[1]), True, "black")
+    else:
+        szam_title2 = r.first_font.render(str(arak[1]), True, "black")
+
+    if arak[2] == "MAX LEVEL!":
+        szam_title3 = r.small_font.render(str(arak[2]), True, "black")
+    else:
+        szam_title3 = r.first_font.render(str(arak[2]), True, "black")
+
+    if arak[3] == "MAX LEVEL!":
+        szam_title4 = r.small_font.render(str(arak[3]), True, "black")
+    else:
+        szam_title4 = r.first_font.render(str(arak[3]), True, "black")
 
 
+    szam_rect1 = szam_title1.get_rect(center=(660,540))
+    szam_rect2 = szam_title2.get_rect(center=(660,900))
+    szam_rect3 = szam_title3.get_rect(center=(1220,540))
+    szam_rect4 = szam_title4.get_rect(center=(1220,900))
+
+    r.screen.blit(szam_title1,szam_rect1)
+    r.screen.blit(szam_title2,szam_rect2)
+    r.screen.blit(szam_title3,szam_rect3)
+    r.screen.blit(szam_title4,szam_rect4)
     
+def Fejlesztes(ertek, nev):
+    ujLista = []
+    with open('progress.txt') as f:
+        line = f.readline()
+        c = 1
+        while line:
+            if line.strip().split(":")[0] == nev and int(line.strip().split(":")[1]) < 5:
+                print(line.strip().split(":")[1])
+                frissit = int(line.strip().split(":")[1]) + 1
+                ujLista.append(f"{nev}:{frissit}")
+                r.beolvasottadatok[ertek] += 1
+                print(frissit)
+            else:
+                ujLista.append(line.strip())
+            line = f.readline()
+            c += 1
+    f.close()
+    fa = open("progress.txt", "w", encoding="utf-8")
+    for i in range(len(ujLista)):
+        fa.write(f"{ujLista[i]}\n")
+        print(ujLista[i])
+    fa.close()
+
+
+# def Fejlesztes(ertek, nev):
+#     f = open("progress.txt", "a", encoding="utf-8")
+#     f[ertek].write(f"{nev}:{r.beolvasottadatok[ertek]+1}")
+#     f.close()
+#     Fajlolvas()

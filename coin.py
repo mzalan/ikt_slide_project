@@ -34,7 +34,7 @@ class Coin:
     def Collide(self, _id):
         if self.Rect.colliderect(r.player_rect):
             if r.objects[_id][3]:
-                r.Coins += 1
+                r.gamecoins += 1
             r.objects[_id][3] = False
 
         d = True
