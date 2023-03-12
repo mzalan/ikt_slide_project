@@ -46,6 +46,8 @@ class Bouncepad:
                         r.objects[_id][3] = False
             except:
                 pass
+        
+        
 
     def Speed(self, _id):
         return self.speed

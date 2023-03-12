@@ -25,13 +25,13 @@ class Wall:
                     return [i, r.powerups[i][0]] 
             else:
                 r.Run = 2
-                
         for i in range(list(r.objects.keys())[0], r.objCount):
 
             try:
                 if r.objects[i][0] == 10:
                     if self.Rect.colliderect(Laser(r.objects[i][1], r.objects[i][2]).Rect):  
                         r.objects[_id][3] = False
+                        
             except:
                 pass
 

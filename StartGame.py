@@ -4,7 +4,7 @@ def StartGame():
     if r.Points > r.Best:
         r.Best = r.Points
     r.Run = 1
-    r.diff = 5
+    r.diff = 6.5
     r.objCount = 0
     r.objects = {}
     r.objects[-1] = [1, random.randint(100,1800), r.spawnPoint, False]

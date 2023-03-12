@@ -8,7 +8,7 @@ def PowerupActivation(img, i, pos):
 
     duration = r.power_upgrades[r.powerups[i][0]]
 
-    surf = pygame.Surface((90,90))
+    surf = pygame.Surface((80,80))
     width = surf.get_rect().width
     height = surf.get_rect().height
     surf = pygame.transform.scale(img, (width, height))
@@ -53,23 +53,23 @@ def PowerupActivation(img, i, pos):
 
         pre_ammo = r.ammo
         
-        abase = pygame.Surface((100,15))
+        abase = pygame.Surface((90,15))
 
-        ammo = pygame.Surface((96,11))
+        ammo = pygame.Surface((86,11))
         ammo.fill("white")
         
-        ammo_prog = pygame.Surface((r.ammo * 24,11))
+        ammo_prog = pygame.Surface((r.ammo * 21.5,11))
         ammo_prog.fill("#de8a02")
 
         line = pygame.Surface((2,11))
 
-        r.screen.blit(abase, (r.player_rect.x, r.player_rect.y+100))
-        r.screen.blit(ammo, (r.player_rect.x+2, r.player_rect.y+102))
-        r.screen.blit(ammo_prog, (r.player_rect.x+2, r.player_rect.y+102))
+        r.screen.blit(abase, (r.player_rect.x, r.player_rect.y+90))
+        r.screen.blit(ammo, (r.player_rect.x+2, r.player_rect.y+92))
+        r.screen.blit(ammo_prog, (r.player_rect.x+2, r.player_rect.y+92))
 
-        r.screen.blit(line, (r.player_rect.x+24, r.player_rect.y+102))
-        r.screen.blit(line, (r.player_rect.x+49, r.player_rect.y+102))
-        r.screen.blit(line, (r.player_rect.x+74, r.player_rect.y+102))
+        r.screen.blit(line, (r.player_rect.x+21.5, r.player_rect.y+92))
+        r.screen.blit(line, (r.player_rect.x+44.5, r.player_rect.y+92))
+        r.screen.blit(line, (r.player_rect.x+66.5, r.player_rect.y+92))
 
 
     r.screen.blit(surf,rect)

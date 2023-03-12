@@ -14,7 +14,7 @@ class Globals:
         self.clock = pygame.time.Clock()
 
 
-        self.player = pygame.Surface((100,100))
+        self.player = pygame.Surface((90,90))
 
         self.player_rect = self.player.get_rect(center=(960,930))
 
@@ -41,8 +41,8 @@ class Globals:
         self.obj_type = 9
         self.objects[-1] = [1, random.randint(100,1800), self.spawnPoint, False] #objects dictionary: az azonosító a key (0-tól végtelenig)
     #                                                                    értéklista 0.eleme a renderelések száma, 1. az xpozíció, 2. az y pozíció 
-        self.diff = 5
-        self.diffCap = 35
+        self.diff = 6.5
+        self.diffCap = 23
         self.Points = 0
         self.Best = 0
 
@@ -71,6 +71,19 @@ class Globals:
         self.blacklist = []
 
         self.beolvasottadatok = []
+
+        self.wallSection = 0 # 0 inaktív, 1 - aktiváció, falszekció tulajdonságainak meghatározása, 2 - aktiválva
+        self.wsdata = [None, None, None] # 0 - távolság a sorok között, 1 - sorok száma, 2 - r.runs upon aktiválás
+
+        self.coingen = None
+        self.coinx = None
+        self.cpattern = None # 0 - egyenes, 1 - ferdebal, 2 - ferdejobb, 3 - zigzag
+
+        self.tgen = None
+        self.tdx = None
+        self.tb = None
+
+        self.distance = random.randint(18,42)
 
     def SelfRet(self):
         return self

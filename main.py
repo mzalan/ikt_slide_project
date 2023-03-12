@@ -3,58 +3,16 @@ from Wall import *
 from keycontrols import *
 from Globals import *
 from playermoving import *
-from Render import *
 from gameover import *
-from coin import *
-from Bouncepad import *
-from Missile import *
 from menu import *
-from Speed import *
-from Magnet import *
-from Shield import *
-from Turbo import *
-from Turret import *
-from Bullet import *
 from Upgrade import *
 from Save import *
 from Generating import *
 
 
 Fajlolvas()
-
 pygame.init()
 
-
-def Generating(cond):
-    if cond:
-        ObjectFill()
-    for i in range(list(r.objects.keys())[0], r.objCount):
-        if r.objects[i][0] == 2:
-            Render(Turbo, i)
-        elif r.objects[i][0] == 1:
-            Render(Shield, i)
-        elif r.objects[i][0] == 4:
-            Render(Magnet, i)
-        elif r.objects[i][0] == 3:
-            col = Render(Missile, i)
-            if col != None:
-                if col[1] == 1 and r.setCap:
-                    ShieldGame()
-                    r.powerups[col[0]][1] -= (1000 - (r.runs - r.powerups[col[0]][1])) + 1
-                    del r.powerups[col[0]]
-                    break
-        elif r.objects[i][0] == 5:
-            col = Render(Wall, i)
-            if col != None:
-                if col[1] == 1 and r.setCap:
-                    ShieldGame()
-                    r.powerups[col[0]][1] -= (1000 - (r.runs - r.powerups[col[0]][1])) + 1
-                    del r.powerups[col[0]]
-                    break
-        elif r.objects[i][0] == 10:
-            Render(Bullet, i)
-        else:
-            Render(Shield, i)
 
 while True:
     r.click = False
@@ -99,17 +57,32 @@ while True:
 
     elif r.Run == 1:
 
-        if r.runs % 120 == 0:
+        if r.wsdata[0] != None and (r.runs - r.wsdata[2]) % r.wsdata[0] == 0:
+            Generating(1)
+        if r.runs % 18 == 0:
             if r.diff < r.diffCap:
-                r.diff += 0.2
+                r.diff += 0.04
             else:
                 if r.setCap:
                     r.diff = r.diffCap
+            rd = random.randint(1,20)
+            if rd == 1:
+                r.distance = random.randint(30, 100)
+            if r.coingen != None:
+                Generating(2)
 
-            Generating(True)
+        if r.runs % r.distance == 0:
+            if r.coingen == None:
+                Generating(0)
+            if r.tgen == None:
+                Generating(0)
+            elif r.tgen != None:
+                Generating(3)
         else:
-            Generating(False)
+            Generating(5)
 
+
+        
         if r.runs % 3 == 0 and r.Run == 1:
             r.Points += r.diff * 1.3
 
@@ -131,10 +104,9 @@ while True:
                     r.powerups[i][1] += 1
 
                 if r.powerups[i][0] == 3 and r.click and r.setCap and r.ammo != 0:
+                    bullet = {max(r.objects.keys())+1: [10, r.player_rect.x + 22.5, r.player_rect.y, True]}
                     r.objCount += 1
-                    bullet = {max(r.objects.keys()): [10, r.player_rect.x + 22.5, r.player_rect.y, True]}
                     r.objects.update(bullet)
-                   
                     if r.ammo > 0:
                         r.ammo -= 1
                 PowerupActivation(r.powerups[i][2], i, pos)
@@ -148,11 +120,8 @@ while True:
             elif to_delete[i][1] == 2:
                 r.diff = r.powerups[to_delete[0][i]][3]
                 r.setCap = True
+                
             del r.powerups[to_delete[i][0]]
-
-        # asd = r.small_font.render(str(r.objects), True, "#5800d4")
-        # sad = asd.get_rect(center=(960,400))
-        # r.screen.blit(asd,sad)
 
         ObjectClean()
 

@@ -22,7 +22,7 @@ def BoostMoving():
         PlayerMoving(-1, 0)
 
     if not r.moveD and r.leftRight[1]:
-        PlayerMoving(1, 1820)
+        PlayerMoving(1, 1830)
 
 
 def Bounce(d,edge, speed):
@@ -35,7 +35,7 @@ def Bounce(d,edge, speed):
             r.player_rect.x = edge
             
             r.bounce_data[0] *= -1
-            r.bounce_data[1] += 1820 * r.bounce_data[0]
+            r.bounce_data[1] += 1830 * r.bounce_data[0]
 
 
     else:
