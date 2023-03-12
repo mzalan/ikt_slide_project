@@ -27,6 +27,27 @@ def GameOver():
         fa.close()
 
     if r.Points > r.Best:
+        ujLista = []
+        with open('progress.txt') as f:
+            line = f.readline()
+            c = 1
+            while line:
+                if line.strip().split(":")[0] == "best":
+                    frissit = r.Points
+                    ujLista.append(f"best:{frissit}")
+
+                    print(frissit)
+                else:
+                    ujLista.append(line.strip())
+                line = f.readline()
+                c += 1
+        f.close()
+        fa = open("progress.txt", "w", encoding="utf-8")
+        for i in range(len(ujLista)):
+            fa.write(f"{ujLista[i]}\n")
+            print(ujLista[i])
+        fa.close()
+
         gover_text = r.gover_font.render("NEW HIGH SCORE", True, "#5800d4")
 
         score_text1 = r.first_font.render("SCORE", True, "#6b0101")

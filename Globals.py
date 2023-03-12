@@ -48,7 +48,7 @@ class Globals:
 
         self.Run = 0 #értéke megmutatja, hogy melyik felületre kell váltani 0 - menu, 1 - játék, 2 - game over, 3 - upgrades
 
-        self.Coins = 0
+        self.Coins = 5000
         self.elapsed = 0
         self.bounce_data = None
 
