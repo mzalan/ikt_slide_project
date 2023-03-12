@@ -1,4 +1,5 @@
-magnet:5
-turbo:5
-shield:5
-turret:5
+magnet:2
+turbo:2
+shield:2
+turret:1
+coins:98

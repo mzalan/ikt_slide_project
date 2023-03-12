@@ -89,6 +89,8 @@ class Globals:
 
         self.distance = random.randint(18,42)
 
+        self.dead = False
+
     def SelfRet(self):
         return self
 

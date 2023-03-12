@@ -2,6 +2,29 @@ from Globals import *
 from Upgrade import *
 
 def GameOver():
+    if not r.dead:
+        r.dead = True
+        r.Coins += r.gamecoins
+        ujLista = []
+        with open('progress.txt') as f:
+            line = f.readline()
+            c = 1
+            while line:
+                if line.strip().split(":")[0] == "coins":
+                    frissit = int(line.strip().split(":")[1]) + r.gamecoins
+                    ujLista.append(f"coins:{frissit}")
+
+                    print(frissit)
+                else:
+                    ujLista.append(line.strip())
+                line = f.readline()
+                c += 1
+        f.close()
+        fa = open("progress.txt", "w", encoding="utf-8")
+        for i in range(len(ujLista)):
+            fa.write(f"{ujLista[i]}\n")
+            print(ujLista[i])
+        fa.close()
 
     if r.Points > r.Best:
         gover_text = r.gover_font.render("NEW HIGH SCORE", True, "#5800d4")

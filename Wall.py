@@ -25,7 +25,6 @@ class Wall:
                     return [i, r.powerups[i][0]] 
             else:
                 r.Run = 2
-                r.Coins += r.gamecoins
         for i in range(list(r.objects.keys())[0], r.objCount):
 
             try:

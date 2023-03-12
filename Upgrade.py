@@ -380,10 +380,11 @@ def Fejlesztes(ertek, nev):
         line = f.readline()
         c = 1
         while line:
-            if line.strip().split(":")[0] == nev and int(line.strip().split(":")[1]) < 5:
+            if line.strip().split(":")[0] == nev and int(line.strip().split(":")[1]) < 5 and r.Coins >= r.arak[r.beolvasottadatok[ertek]]:
                 print(line.strip().split(":")[1])
                 frissit = int(line.strip().split(":")[1]) + 1
                 ujLista.append(f"{nev}:{frissit}")
+                r.Coins -= r.arak[r.beolvasottadatok[ertek]]
                 r.beolvasottadatok[ertek] += 1
                 print(frissit)
             else:

@@ -17,6 +17,7 @@ def StartGame():
     r.powerups = []
     r.setCap = True
     r.gamecoins = 0
+    r.dead = False
 
 def ShieldGame():
     r.bounce_data = None
