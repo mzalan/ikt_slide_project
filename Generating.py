@@ -60,7 +60,7 @@ def Generating(op):
         elif r.objects[i][0] == 5:
             col = Render(Wall, i)
             if col != None:
-                if col[1] == 1 and r.setCap:
+                if col[1] == 2 and r.setCap:
                     ShieldGame()
                     r.powerups[col[0]][1] -= (1000 - (r.runs - r.powerups[col[0]][1])) + 1
                     del r.powerups[col[0]]
@@ -68,7 +68,7 @@ def Generating(op):
         elif r.objects[i][0] == 6:
             col = Render(Bouncepad, i)
             if col != None:
-                if col[1] == 1 and r.setCap:
+                if col[1] == 2 and r.setCap:
                     ShieldGame()
                     r.powerups[col[0]][1] -= (1000 - (r.runs - r.powerups[col[0]][1])) + 1
                     del r.powerups[col[0]]

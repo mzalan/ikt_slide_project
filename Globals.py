@@ -57,10 +57,10 @@ class Globals:
         self.runs = 0
 
 
-        self.powerup_img = [pygame.image.load(os.path.join('assets', 'magnet.png')), pygame.image.load(os.path.join('assets', 'shield.png')), pygame.image.load(os.path.join('assets', 'speed.png')), pygame.image.load(os.path.join('assets', 'laser.png'))]
+        self.powerup_img = [pygame.image.load(os.path.join('assets', 'magnet.png')), pygame.image.load(os.path.join('assets', 'speed.png')), pygame.image.load(os.path.join('assets', 'shield.png')), pygame.image.load(os.path.join('assets', 'laser.png'))]
         self.powerups = []
         self.power_upgrades = []
-        self.default_upgrades = [1000, 1000, 200, 1200]
+        self.default_upgrades = [1000, 200, 1000, 1200]
         
         self.setCap = True
 

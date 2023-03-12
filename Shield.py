@@ -19,7 +19,7 @@ class Shield:
     def Collide(self, _id):
         if self.Rect.colliderect(r.player_rect) and r.objects[_id][3]:
             r.objects[_id][3] = False
-            p = 1
+            p = 2
 
             for i in range(len(r.powerups)):
                 if p in r.powerups[i]:

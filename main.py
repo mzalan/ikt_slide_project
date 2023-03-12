@@ -9,7 +9,6 @@ from Upgrade import *
 from Save import *
 from Generating import *
 
-
 Fajlolvas()
 pygame.init()
 
@@ -100,7 +99,7 @@ while True:
                 drawables += 1
                 pos = drawables * 350
 
-                if not r.setCap and (r.powerups[i][0] == 1 or r.powerups[i][0] == 3):
+                if not r.setCap and (r.powerups[i][0] == 2 or r.powerups[i][0] == 3):
                     r.powerups[i][1] += 1
 
                 if r.powerups[i][0] == 3 and r.click and r.setCap and r.ammo != 0:
@@ -115,16 +114,15 @@ while True:
                 to_delete.append([i, r.powerups[i][0]])
             
         for i in range(len(to_delete)):
-            if to_delete[i][1] == 1:
+            if to_delete[i][1] == 2:
                 pass
-            elif to_delete[i][1] == 2:
+            elif to_delete[i][1] == 1:
                 r.diff = r.powerups[to_delete[0][i]][3]
                 r.setCap = True
                 
             del r.powerups[to_delete[i][0]]
 
         ObjectClean()
-
         r.runs += 1  
 
     elif r.Run == 2:

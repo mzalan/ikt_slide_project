@@ -14,7 +14,6 @@ def GameOver():
                     frissit = int(line.strip().split(":")[1]) + r.gamecoins
                     ujLista.append(f"coins:{frissit}")
 
-                    print(frissit)
                 else:
                     ujLista.append(line.strip())
                 line = f.readline()
@@ -23,7 +22,6 @@ def GameOver():
         fa = open("progress.txt", "w", encoding="utf-8")
         for i in range(len(ujLista)):
             fa.write(f"{ujLista[i]}\n")
-            print(ujLista[i])
         fa.close()
 
     if r.Points > r.Best:
@@ -35,8 +33,6 @@ def GameOver():
                 if line.strip().split(":")[0] == "best":
                     frissit = r.Points
                     ujLista.append(f"best:{frissit}")
-
-                    print(frissit)
                 else:
                     ujLista.append(line.strip())
                 line = f.readline()
@@ -45,7 +41,6 @@ def GameOver():
         fa = open("progress.txt", "w", encoding="utf-8")
         for i in range(len(ujLista)):
             fa.write(f"{ujLista[i]}\n")
-            print(ujLista[i])
         fa.close()
 
         gover_text = r.gover_font.render("NEW HIGH SCORE", True, "#5800d4")

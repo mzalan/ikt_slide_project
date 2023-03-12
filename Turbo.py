@@ -21,7 +21,7 @@ class Turbo:
         if self.Rect.colliderect(r.player_rect) and r.objects[_id][3] and r.setCap:
             r.objects[_id][3] = False
             r.setCap = False
-            p = 2
+            p = 1
 
             for i in range(len(r.powerups)):
                 if p in r.powerups[i]:

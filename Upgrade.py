@@ -231,10 +231,10 @@ def Upgrades():
     mellekcsik = pygame.Surface((416,11))
     mellekcsik.fill("white")
 
-    egyegyseg1 = pygame.Surface((r.beolvasottadatok[0] * 83, 11))
-    egyegyseg2 = pygame.Surface((r.beolvasottadatok[1] * 83, 11))
-    egyegyseg3 = pygame.Surface((r.beolvasottadatok[2] * 83, 11))
-    egyegyseg4 = pygame.Surface((r.beolvasottadatok[3] * 83, 11))
+    egyegyseg1 = pygame.Surface((r.beolvasottadatok[0] * 83.3, 11))
+    egyegyseg2 = pygame.Surface((r.beolvasottadatok[1] * 83.3, 11))
+    egyegyseg3 = pygame.Surface((r.beolvasottadatok[2] * 83.3, 11))
+    egyegyseg4 = pygame.Surface((r.beolvasottadatok[3] * 83.3, 11))
     egyegyseg1.fill("#de8a02")
     egyegyseg2.fill("#de8a02")
     egyegyseg3.fill("#de8a02")
@@ -301,7 +301,7 @@ def Upgrades():
 
     
     
-
+    
     r.screen.blit(focsik, (450,480))
     r.screen.blit(mellekcsik, (452,482))
     r.screen.blit(egyegyseg1, (452,482))
@@ -398,6 +398,9 @@ def Fejlesztes(ertek, nev):
     for i in range(len(ujLista)):
         fa.write(f"{ujLista[i]}\n")
     fa.close()
+    for i in range(len(r.beolvasottadatok)):
+        r.power_upgrades[i] = r.default_upgrades[i]+r.default_upgrades[i]/5*r.beolvasottadatok[i]
+    print(r.power_upgrades)
 
 
 
