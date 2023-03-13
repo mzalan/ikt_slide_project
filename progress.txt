@@ -2,5 +2,5 @@ magnet:0
 turbo:0
 shield:0
 turret:0
-coins:0
-best:0
+coins:140
+best:14030.496999999974
