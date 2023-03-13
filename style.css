@@ -34,6 +34,14 @@ body {
     margin-bottom: 20px;
 }
 
+#coinkep, #magnetkep, #shieldkep, #turbokep, #turretkep,#upgradekep{
+    width: 270px;
+    height: 300px;
+    margin-left: 160px;
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+
 #table{
     margin-top: 50px;
     margin-left: 50px;
@@ -72,9 +80,9 @@ body {
 }
 
 #szoveg{
-    font-size: 23px;
+    font-size: 20px;
 }
 
 #largerszoveg{
-    font-size: 28px;
+    font-size: 25px;
 }
