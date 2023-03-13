@@ -24,7 +24,7 @@ def Generating(op):
                 BpadSection()
             if random.randint(1,5) == 1 and r.wallSection == 0:
                 CoinGen()
-            if random.randint(1,4) == 1 and r.wallSection == 0:
+            if random.randint(1,25) == 1 and r.wallSection == 0:
                 rp = random.randint(1,4)
                 if rp == 1:
                     rp = 2

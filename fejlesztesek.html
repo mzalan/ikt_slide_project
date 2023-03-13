@@ -39,7 +39,7 @@
 
         <div class="col-12">
           <div class="card mb-3" id="fejleszteskartya1">
-            <img src="assets/coin.png" alt="turret" class="card-img-top mx-auto img-fluid" title="Érme" id="coinkep">
+            <img src="assets/coin.png" alt="Érme" class="card-img-top mx-auto img-fluid" title="Érme" id="coinkep">
             <div class="card-body" id="keret">
               <h1 class="card-title">Érme</h1>
                 <ul>
@@ -55,7 +55,7 @@
 
         <div class="col-12 col-lg-6">
           <div class="card mb-3" id="fejleszteskartya2">
-            <img src="assets/magnet.png" alt="magnet" class="card-img-top mx-auto img-fluid" title="Mágnes" id="magnetkep">
+            <img src="assets/magnet.png" alt="Mágnes" class="card-img-top mx-auto img-fluid" title="Mágnes" id="magnetkep">
             <div class="card-body" id="keret">
               <h1 class="card-title">Mágnes</h1>
                 <ul>
@@ -67,7 +67,7 @@
 
         <div class="col-12 col-lg-6">
           <div class="card mb-3" id="fejleszteskartya2">
-            <img src="assets/shield.png" alt="shield" class="card-img-top mx-auto img-fluid" title="Pajzs" id="shieldkep">
+            <img src="assets/shield.png" alt="Pajzs" class="card-img-top mx-auto img-fluid" title="Pajzs" id="shieldkep">
             <div class="card-body" id="keret">
               <h1 class="card-title">Pajzs</h1>
                 <ul>
@@ -80,7 +80,7 @@
 
         <div class="col-12 col-lg-6">
           <div class="card mb-3" id="fejleszteskartya2">
-            <img src="assets/speed.png" alt="turbo" class="card-img-top mx-auto img-fluid" title="Turbo" id="turbokep">
+            <img src="assets/speed.png" alt="Turbo" class="card-img-top mx-auto img-fluid" title="Turbo" id="turbokep">
             <div class="card-body" id="keret">
               <h1 class="card-title">Turbo</h1>
                 <ul>
@@ -92,7 +92,7 @@
 
         <div class="col-12 col-lg-6">
           <div class="card mb-3" id="fejleszteskartya2">
-            <img src="assets/laser.png" alt="turret" class="card-img-top mx-auto img-fluid" title="Lézerágyú" id="turretkep">
+            <img src="assets/laser.png" alt="Lézerágyú" class="card-img-top mx-auto img-fluid" title="Lézerágyú" id="turretkep">
             <div class="card-body" id="keret">
               <h1 class="card-title">Lézerágyú</h1>
                 <ul>
@@ -104,7 +104,30 @@
 
         <div class="col-12">
           <div class="card mb-3" id="fejleszteskartya2">
-            <img onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="assets/upgrade.png" alt="upgrade" class="card-img-top mx-auto img-fluid" title="Fejlesztő oldal" id="fejleszteskep">
+            <img onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="assets/allapot.png" alt="Állapotjelző" class="card-img-top mx-auto img-fluid" title="Állapotjelző" id="fejleszteskep">
+            <script>
+              function bigImg(x) {
+                x.style.height = "500px";
+                x.style.width = "800px";
+              }
+              
+              function normalImg(x) {
+                x.style.height = "300px";
+                x.style.width = "500px";
+              }
+              </script>
+            <div class="card-body" id="keret">
+              <h1 class="card-title">Állapotjelző</h1>
+                <ul>
+                  <h3>A sáv azt jelöli, hogy a képességből mennyi idő van hátra.</h3>
+                </ul>  
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="card mb-3" id="fejleszteskartya2">
+            <img onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="assets/upgrade.png" alt="Fejlesztő oldal" class="card-img-top mx-auto img-fluid" title="Fejlesztő oldal" id="fejleszteskep">
             <script>
               function bigImg(x) {
                 x.style.height = "500px";
@@ -126,6 +149,8 @@
             </div>
           </div>
         </div>
+
+        
 
         
 
