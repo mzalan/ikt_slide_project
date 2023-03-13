@@ -66,10 +66,15 @@ body {
     height: 275px;
 }
 
+#fejleszteskep{
+    width: 500px;
+    height: 275px;
+}
+
 #szoveg{
-    font-size: 20px;
+    font-size: 23px;
 }
 
 #largerszoveg{
-    font-size: 25px;
+    font-size: 28px;
 }
